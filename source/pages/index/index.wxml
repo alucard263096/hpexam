@@ -1,0 +1,29 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <image class="userinfo-avatar" src="{{UserInfo.avatarUrl}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{UserInfo.nickName}}</text>
+  </view>
+</view>
+<navigator url='/pages/albums/albums' class='flex-row white-block line-change'>
+  <view class='flex-1'>相册</view>
+  <view class='flex-1 text-right'>
+    <image mode='widthFix' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/ad1a1b7183951dc89f508a6b6c422144_18040400033.png"></image>
+  </view>
+</navigator>
+<navigator url='/pages/albums/albums' class='flex-row white-block line-change'>
+  <view class='flex-1'>视频</view>
+  <view class='flex-1 text-right'>
+    <image mode='widthFix' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/0c485e759453589b882f9509dae8753d_18040400001.png"></image>
+  </view>
+</navigator>
+
+<view class='text-center'>
+  <image mode='widthFix' style='width:150rpx;margin-top:120rpx;' bindtap='goupload'  src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/3b070792814a3b2aaca548c61bc17be1_18040400055.png?height=50'></image>
+</view>
+
+<view class='text-center privacy'>
+<navigator url="/pages/content/content?keycode=privacy" >
+条款与声明
+</navigator>
+</view>
