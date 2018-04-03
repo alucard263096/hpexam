@@ -1,0 +1,19 @@
+<!--pages/rader/rader.wxml-->
+<image src='http://zhichikanjia.oss-cn-hangzhou.aliyuncs.com/rader.gif' style='width:100vw' mode="widthFix"></image>
+<image src='../../img/teacher.jpg' class='teachphoto' bindtap='selectteacher' wx:if="{{showteacher==true}}"></image>
+<view class='primary' style='text-align:center;' wx:if="{{selected!=true}}">正在寻找附近的老师</view>
+<view wx:if="{{selected==true}}">
+
+  <view class='teacherinfo'>
+    <view>
+      <image class='teacherphoto' src='../../img/teacher.jpg'></image>
+    </view>
+    <view>
+      <view class='teachername'>张军安</view>
+      <view class='teachersummary'>
+        武汉大学附属高中老师，20年的教学经验，教导成千上万的学生
+      </view>
+    </view>
+  </view>
+  <button type='primary' class='gopayment' bindtap='gopayment'  >立即支付解答</button>
+</view>

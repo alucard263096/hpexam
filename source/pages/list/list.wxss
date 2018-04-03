@@ -1,0 +1,18 @@
+/* pages/list/list.wxss */
+.exam{
+  padding-left: 10px;
+  padding-right:10px;
+}
+.exam .item{
+  padding-top: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+.exam .title{
+  font-size: 14px;
+}
+.exam .summary{
+  font-size: 10px;
+  color:#ccc;
+  margin-top: 5px;
+}

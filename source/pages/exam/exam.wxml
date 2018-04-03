@@ -1,0 +1,81 @@
+<!--pages/exam/exam.wxml-->
+<view class="container">
+  <scroll-view scroll-y class='questionbody'>
+    <block wx:for="{{questions}}" wx:key="key">
+      <view class='item' wx:if="{{current==item.no}}">
+
+        <view class='no'>{{item.no}}/{{questions.length}} [单选题]</view>
+        <view class='title'>{{item.title}}</view>
+
+        <radio-group class="radio-group" bindchange="radioChange" id="{{item.no}}">
+          <view>
+            <label class="radio">
+              <radio value="A" checked='{{item.val=="A"}}' disabled="{{issubmit}}" />{{item.option_a}}
+            </label>
+          </view>
+          <view>
+            <label class="radio">
+              <radio value="B" checked='{{item.val=="B"}}' disabled="{{issubmit}}" />{{item.option_b}}
+            </label>
+          </view>
+          <view>
+            <label class="radio">
+              <radio value="C" checked='{{item.val=="C"}}' disabled="{{issubmit}}" />{{item.option_c}}
+            </label>
+          </view>
+          <view>
+            <label class="radio">
+              <radio value="D" checked='{{item.val=="D"}}' disabled="{{issubmit}}" />{{item.option_d}}
+            </label>
+          </view>
+        </radio-group>
+        <view wx:if="{{issubmit}}">
+          <view class='anwser' wx:if="{{item.anwser==item.val}}">答对了，答案是
+            <text class='primary'>{{item.anwser}}</text>
+          </view>
+          <view class='anwser'  wx:if="{{item.anwser!=item.val}}">答错了，答案是
+            <text class='primary'>{{item.anwser}}</text>，你选择
+            <text class='danger'>{{item.val}}</text>
+          </view>
+          <view class='anwser' >
+            题目解析：{{item.title_anwser}}
+          </view>
+          <view wx:if="{{item.anwser==item.val}}">
+            <view class='anwseroption {{item.anwser=="A"?"primary":""}}'>选项A，{{item.option_a_anwser}}</view>
+            <view class='anwseroption {{item.anwser=="B"?"primary":""}}'>选项B，{{item.option_b_anwser}}</view>
+            <view class='anwseroption {{item.anwser=="C"?"primary":""}}'>选项C，{{item.option_c_anwser}}</view>
+            <view class='anwseroption {{item.anwser=="D"?"primary":""}}'>选项D，{{item.option_d_anwser}}</view>
+          </view>
+          <view wx:if="{{item.anwser!=item.val}}">
+            <view class='anwseroption {{item.anwser=="A"?"primary":""}} {{item.val=="A"?"danger":""}}'>选项A，{{item.option_a_anwser}}</view>
+            <view class='anwseroption {{item.anwser=="B"?"primary":""}} {{item.val=="B"?"danger":""}}'>选项B，{{item.option_b_anwser}}</view>
+            <view class='anwseroption {{item.anwser=="C"?"primary":""}} {{item.val=="C"?"danger":""}}'>选项C，{{item.option_c_anwser}}</view>
+            <view class='anwseroption {{item.anwser=="D"?"primary":""}} {{item.val=="D"?"danger":""}}'>选项D，{{item.option_d_anwser}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+  <view class='btnGroup flex-row'>
+    <view class='flex-1 right-border' bindtap='lastQ'>上一题</view>
+    <view class='flex-1' bindtap='showCard'>题卡</view>
+    <view class='flex-1 left-border' bindtap='nextQ' wx:if="{{issubmit==true}}">下一题</view>
+    <view class='flex-1 left-border' bindtap='nextQ' wx:if="{{issubmit==false&&current<questions.length&&fillno<questions.length}}">下一题</view>
+    <view class='flex-1 left-border' bindtap='submit' wx:if="{{issubmit==false&&(current>=questions.length||fillno>=questions.length)}}">提交</view>
+  </view>
+</view>
+
+<view wx:if="{{showcard==true}}" class='card'>
+  <view style='padding:15px' wx:if="{{issubmit}}">
+    <text class='danger' style='font-size:38px;'>{{score}}分</text>
+  </view>
+  <scroll-view scroll-y class='cardscroll'>
+    <view wx:for="{{questions}}" wx:key="key" class='carditem {{item.val!=""?"active":""}} {{issubmit==true&&item.val!=item.anwser?"error":""}}' bindtap='gotoQuetion' id="{{item.no}}">
+      {{item.val!=""?item.val:item.no}}
+    </view>
+  </scroll-view>
+  <button class='makeappointment' type='primary' bindtap='makebooking'>寻找附近名师解答</button>
+</view>
+<live-player src="https://domain/pull_stream" mode="RTC" autoplay bindstatechange="statechange" binderror="error" class="liveplayer" wx:if="{{inasking==true}}" />
+
+<live-pusher url="rtmp://video-center.alivecdn.com/tiku/test" mode="RTC" autopush bindstatechange="statechange" class="livepusher"  wx:if="{{inasking==true}}" />

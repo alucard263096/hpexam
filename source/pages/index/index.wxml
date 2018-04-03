@@ -1,0 +1,23 @@
+<!--index.wxml-->
+<view class="container">
+  <view class='memberinfo bg-primary'>
+    <image src='{{UserInfo.avatarUrl}}' class='photo'></image>
+    <view class='flex-row'>
+      <view class='flex-1'>
+        <view>75.4%</view>
+        <view>正确率</view>
+      </view>
+      <view class='flex-1'>
+        <view>43分</view>
+        <view>综合评分</view></view>
+      <view class='flex-1'>
+        <view>46/198</view>
+        <view>排名</view></view>
+    </view>
+  </view>
+  <view class='category'>
+    <view wx:for="{{categories}}" wx:key="key" class='item'>
+      <button bindtap='gotoList' id="{{item.id}}">{{item.name}}</button>
+    </view>
+  </view>
+</view>

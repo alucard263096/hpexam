@@ -1,0 +1,29 @@
+/* pages/rader/rader.wxss */
+.teachphoto{
+  position: fixed;
+  width:12vw;
+  height: 12vw;
+  border-radius: 6vw;
+  top: 52vw;
+  left: 33vw;
+}
+.teacherinfo{
+  display: flex;
+  padding:3vw;
+}
+.teacherphoto{
+  width:20vw;
+  height: 20vw;
+  border-radius:10vw;
+}
+.teachername{
+  margin-left: 3vw;
+}
+.teachersummary{
+  margin-left: 3vw;
+  font-size: 80%;
+  color:#999;
+}
+.gopayment{
+  margin: 10vw;
+}

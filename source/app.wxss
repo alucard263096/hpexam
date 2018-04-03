@@ -1,0 +1,23 @@
+/**app.wxss**/
+.container {
+  
+} 
+
+.bg-primary{
+  background: #44B549;
+}
+.primary{
+  color: #44B549;
+}
+.flex-row{
+  display: flex;
+}
+.flex-1{
+  flex: 1;
+}
+.bg-danger{
+  background: #E64240;
+}
+.danger{
+  color: #E64240;
+}

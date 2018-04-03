@@ -1,0 +1,102 @@
+/* pages/exam/exam.wxss */
+.questionbody{
+  padding:10px;
+  font-size: 18px;
+  height:86.5vh;
+}
+.no{
+  margin-bottom: 10px;
+}
+.title{
+  
+  margin-bottom: 10px;
+}
+.radio-group view{
+
+  margin-bottom: 15px;
+}
+.btnGroup{
+  background: #44B549;
+  text-align: center;
+  color:white;
+  height: 10vh;
+}
+radio{
+  margin-right: 10px;
+}
+.anwser{
+  
+  margin-bottom: 15px;
+}
+.anwseroption{
+  
+  margin-bottom: 15px;
+}
+.btnGroup view{
+  padding-top:3vh;
+  padding-bottom:3vh;
+}
+.right-border{
+  border-right: 1px solid white;
+}
+.left-border{
+  border-left: 1px solid white;
+}
+.cardscroll{
+  
+  width: 100vw;
+  height: 80vh;
+
+}
+.carditem{
+  border: 1px solid #ccc;
+  text-align: center;
+  width: 53px;
+  height: 38px;
+  float: left;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-top:15px;
+}
+.carditem.active{
+  border: 1px solid #fff;
+  background: #44B549;
+  color: #fff;
+}
+.card{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  background: white;
+}
+.carditem.error{
+  border: 1px solid #fff;
+  background: #E64240;
+  color: #fff;
+}
+.makeappointment{
+  position: fixed;
+  bottom: 5vw;
+  width: 90vw;
+  margin:5vw;
+}
+.liveplayer{
+  position: fixed;
+  top:5vw;
+  left:5vw;
+  width:80px;
+  height:128px;
+  opacity:0.5;
+}
+
+.livepusher{
+  position: fixed;
+  bottom:5vw;
+  right:5vw;
+  width:80px;
+  height:128px;
+  opacity:0.5;
+}

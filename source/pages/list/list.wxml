@@ -1,0 +1,9 @@
+<!--pages/list/list.wxml-->
+<view class="container">
+  <view class='exam'>
+    <view wx:for="{{exams}}" wx:key="key" class='item' bindtap='gotoExam' id="{{item.id}}">
+      <view class='title'>{{item.name}}</view>
+      <view class='summary'>{{item.summary}}</view>
+    </view>
+  </view>
+</view>
