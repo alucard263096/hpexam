@@ -35,12 +35,21 @@ class Content extends AppBase {
                   })
                 }
               });
-              console.log("a");
             });
           }
           if (res.tapIndex == 1) {
-            that.Base.takeVideo("memberphoto", (path) => {
-              console.log("a");
+            that.Base.takeImage("memberphoto", (path) => {
+              var api = new AlbumApi();
+              api.upload({
+                content: path,
+                filetype: "V"
+              }, (ret) => {
+                if (ret.code == "0") {
+                  wx.showToast({
+                    title: '视频上传成功',
+                  })
+                }
+              });
             });
           }
         }
