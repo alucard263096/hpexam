@@ -8,7 +8,7 @@
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#000",
+    "navigationBarBackgroundColor": "#50BAFF",
     "navigationBarTitleText": "me相册",
     "navigationBarTextStyle":"white"
   }
