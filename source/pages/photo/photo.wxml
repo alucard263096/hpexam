@@ -1,0 +1,18 @@
+<!--pages/photo/photo.wxml-->
+<view wx:for="{{list}}" wx:key="key">
+  <view class='title'>{{item.name}}</view>
+  <view>
+    <image mode='aspectFit' bindtap='gotoPhoto' id="{{item.id}}" wx:for="{{item.vals}}" wx:key="aa" class='photo' src="{{uploadpath}}memberphoto/{{item.content}}" wx:if="{{item.filetype=='P'}}"></image>
+    <video mode='aspectFit' bindtap='gotoPhoto' id="{{item.id}}" wx:for="{{item.vals}}" wx:key="aa" class='photo' src="{{uploadpath}}memberphoto/{{item.content}}" wx:if="{{item.filetype=='V'}}"  controls='false'></video>
+  </view>
+</view>
+
+<view style='height:100rpx;'>
+</view>
+
+<view class='picicon' bindtap='uploadpic'>
+<image class='icon' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/03a9dfb805bee4e0dd98448d0692b23e_18040600000.png'></image>
+</view>
+<view class='videoicon' bindtap='uploadvid'>
+<image class='icon' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/29e5df7ddb5063c5572b256ff416626c_18040600051.png'></image>
+</view>

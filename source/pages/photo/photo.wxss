@@ -1,0 +1,43 @@
+/* pages/photo/photo.wxss */
+.title{
+  font-size: 14px;
+  padding: 20rpx;
+}
+.photo{
+  width: 142rpx;
+  margin-right:8rpx;
+  height: 142rpx;
+}
+.privacy{
+  position: fixed;
+  bottom: 0vw;
+  width: 750rpx;
+  color:#00AAFF;
+  border-top: 2px solid #ccc;
+}
+.privacy view{
+  padding:20rpx;
+}
+.picicon{
+  position: fixed;
+  bottom: 250rpx;
+  right:30rpx;
+  line-height: 0rpx;
+  padding: 20rpx;
+  background:#50BAFF;
+  border-radius: 50%;
+  
+}
+.icon{
+  width: 80rpx;
+  height: 80rpx;
+}
+.videoicon{
+  position: fixed;
+  bottom: 100rpx;
+  right:30rpx;
+  line-height: 0rpx;
+  padding: 20rpx;
+  background:#50BAFF;
+  border-radius: 50%;
+}

@@ -34,8 +34,8 @@ class Content extends AppBase {
                 filetype: "P"
               }, (ret) => {
                 if (ret.code == "0") {
-                  wx.showToast({
-                    title: '图片上传成功',
+                  wx.navigateTo({
+                    url: '../file/file?id=' + ret.return,
                   })
                 }
               });
@@ -49,8 +49,8 @@ class Content extends AppBase {
                 filetype: "V"
               }, (ret) => {
                 if (ret.code == "0") {
-                  wx.showToast({
-                    title: '视频上传成功',
+                  wx.navigateTo({
+                    url: '../file/file?id='+ret.return,
                   })
                 }
               });
@@ -70,8 +70,8 @@ class Content extends AppBase {
         location:that.Base.getMyData().address
       }, (ret) => {
         if (ret.code == "0") {
-          wx.showToast({
-            title: ret.return,
+          wx.navigateTo({
+            url: '../file/file?id=' + ret.return,
           })
         }
       });
@@ -87,12 +87,31 @@ class Content extends AppBase {
         location: that.Base.getMyData().address
       }, (ret) => {
         if (ret.code == "0") {
-          wx.showToast({
-            title: ret.return,
+          wx.navigateTo({
+            url: '../file/file?id=' + ret.return,
           })
         }
       });
     });
+  }
+  addNew(){
+    wx.navigateTo({
+      url: '../album/album',
+    })
+  }
+  openAlbum(e){
+    console.log(e);
+    var id=e.currentTarget.id;
+    wx.navigateTo({
+      url: '../album/album?id='+id,
+    })
+  }
+  openPhotos(e){
+
+    var id = e.currentTarget.id;
+    wx.navigateTo({
+      url: '../photo/photo?album_id=' + id,
+    })
   }
 }
 var page = new Content();
@@ -100,6 +119,9 @@ var body = page.generateBodyJson();
 body.onLoad = page.onLoad;
 body.onShow = page.onShow;
 body.goupload = page.goupload;
-body.clickPhoto = page.clickPhoto;
-body.clickVideo = page.clickVideo;
+body.clickPhoto = page.clickPhoto; 
+body.clickVideo = page.clickVideo; 
+body.addNew = page.addNew; 
+body.openAlbum = page.openAlbum;
+body.openPhotos = page.openPhotos;
 Page(body)

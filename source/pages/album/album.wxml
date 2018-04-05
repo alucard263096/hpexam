@@ -1,6 +1,6 @@
 <!--pages/album/album.wxml-->
 <view class='title'>
-{{options.id==undefined?"新建相册":"修改相册"}}
+{{options.id==0?"新建相册":"修改相册"}}
 </view>
 <view class='subtitle'>
 相册名称
@@ -18,8 +18,8 @@
 </view>
 </view>
 
-<view style='margin-top:100px;padding:20px;'>
-<button type='primary'>提交</button>
-<button type='default' style='margin-top:20px;'>返回</button>
-<button type='warn'  style='margin-top:20px;' wx:if="{{options.id!=undefined}}">删除</button>
+<view style='margin-top:200px;padding:20px;'>
+<button type='primary' bindtap='save'>提交</button>
+<button type='default' bindtap='back' style='margin-top:20px;'wx:if="{{options.id==0}}">返回</button>
+<button type='warn' bindtap='deletea'  style='margin-top:20px;' wx:if="{{options.id!=0}}">删除</button>
 </view>

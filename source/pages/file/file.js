@@ -6,7 +6,6 @@ class Content extends AppBase {
     super();
   }
   onLoad(options) {
-    
     this.Base.Page = this;
     super.onLoad(options);
 

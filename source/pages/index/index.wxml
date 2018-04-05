@@ -6,18 +6,21 @@
 <view url='/pages/albums/albums' class='flex-row white-block line-change'>
   <view class='flex-1'>日记</view>
   <view class='flex-1 text-right'>
-    <image mode='widthFix' style='margin-top:6rpx;' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/3cd93307e5f11403d819d45df5b70145_18040500042.png"></image>
+    <!--<image mode='widthFix' style='margin-top:6rpx;' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/3cd93307e5f11403d819d45df5b70145_18040500042.png"></image>-->
   </view>
 </view>
 
 <view class='albums flex-row'>
   <view class='album  text-center'>
-    <image class='addcover' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/24f1dad6948260eb4481374149fc3a06_18040400048.png?height=50'></image>
+    <image class='addcover' bindtap='addNew' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/24f1dad6948260eb4481374149fc3a06_18040400048.png?height=50'></image>
     <view class='descriptionplay' >添加相册</view>
   </view>
-  <view class='album text-center' wx:for="{{albums}}" wx:key="k">
-    <image class='cover'  mode='aspectFit'  src='{{item.cover==""?"http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/446cc2ae0373da4452913d2e2bdbccde_18040511008.png":uploadpath+"memberphoto/"+item.cover}}'></image>
+  <view class='album text-center' wx:for="{{albums}}"   wx:key="k">
+    <image class='cover'  mode='aspectFit' bindtap='openPhotos' id="{{item.id}}" wx:if="{{item.lastfileinfo.filetype=='P'}}"  src='{{uploadpath}}memberphoto/{{item.lastfileinfo.content}}'></image>
+    <video class='cover'  mode='aspectFit' bindtap='openPhotos' id="{{item.id}}" wx:if="{{item.lastfileinfo.filetype=='V'}}"  src='{{uploadpath}}memberphoto/{{item.lastfileinfo.content}}' controls='false'></video>
+    <image class='cover'  mode='aspectFit' bindtap='openPhotos' id="{{item.id}}" wx:if="{{item.lastfileinfo.id==''}}"  src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/446cc2ae0373da4452913d2e2bdbccde_18040511008.png'></image>
     <view class='descriptionplay {{item.isdefault=="Y"?"font-primary":""}} ' >{{item.name}}</view>
+    <view class='edit' bindtap='openAlbum' id="{{item.id}}"  ></view>
   </view>
 </view>
 

@@ -324,7 +324,7 @@ export class AppBase {
       }
     });
   }
-  uploadImage(modul, callback) {
+  uploadImage(modul, callback, completecallback) {
     wx.chooseImage({
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
@@ -364,10 +364,63 @@ export class AppBase {
             }
           });
         }
+        if (completecallback != undefined) {
+          completecallback();
+        }
       }
     })
   }
 
+  uploadVideo(modul, callback,completecallback) {
+    wx.chooseVideo({
+      compressed: true, // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      maxDuration: 60,
+      success: function (res) {
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        console.log(res.tempFilePaths);
+        //that.setData({
+        //  photos: that.data.photos.concat(res.tempFilePaths)
+        //});
+        var tempFilePaths = [];
+        tempFilePaths.push(res.tempFilePath);
+        //res.tempFilePaths
+        for (var i = 0; i < tempFilePaths.length; i++) {
+
+          wx.uploadFile({
+            url: ApiConfig.GetFileUploadAPI(), //仅为示例，非真实的接口地址
+            filePath: tempFilePaths[i],
+            name: 'file',
+            formData: {
+              'module': modul,
+              "field": "file"
+            },
+            success: function (res) {
+              console.log(res);
+              var data = res.data
+              if (data.substr(0, 7) == "success") {
+                data = data.split("|");
+                var photo = data[2];
+                callback(photo);
+              } else {
+                console.error(res.data);
+                wx.showToast({
+                  title: '上传失败，请重试',
+                  icon: 'warn',
+                  duration: 2000
+                })
+              }
+              //do something
+            }
+          });
+        }
+        if(completecallback!=undefined){
+          completecallback();
+        }
+      }
+    })
+  }
+  
   takeImage(modul, callback) {
     wx.chooseImage({
       count: 1,
