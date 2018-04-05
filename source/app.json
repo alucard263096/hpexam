@@ -1,6 +1,8 @@
 {
   "pages":[
+    "pages/album/album",
     "pages/index/index",
+    "pages/file/file",
     "pages/capture/capture",
     "pages/content/content",
     "pages/albums/albums",

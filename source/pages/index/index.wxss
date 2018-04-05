@@ -42,3 +42,26 @@
 .privacy view{
   padding:20rpx;
 }
+.albums{
+  padding:20rpx;
+  padding-right:0rpx;
+  display: flex;
+  flex-wrap:wrap;
+}
+.album{
+  width:365rpx;
+  margin-right: 0rpx;
+}
+.cover{
+  width: 250rpx;
+  height: 250rpx;
+  margin:21rpx;
+}
+.addcover{
+  width: 292rpx;
+  height: 292rpx;
+}
+.descriptionplay{
+  font-size: 60%;
+  padding:10rpx;
+}

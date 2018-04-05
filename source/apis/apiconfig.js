@@ -4,7 +4,7 @@ export class ApiConfig {
         return "https://cmsdev.app-link.org/alucard263096/mealbum/api/";
     }
     static GetUploadPath() {
-        return "https://cmsdev.app-link.org/alucard263096/mealbum/upload/";
+      return "https://alioss.app-link.org/alucard263096/mealbum/";
     }
     static GetFileUploadAPI() {
       return "https://cmsdev.app-link.org/alucard263096/mealbum/fileupload/";

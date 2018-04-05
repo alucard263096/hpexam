@@ -15,6 +15,10 @@ class Content extends AppBase {
   onShow() {
     var that = this;
     super.onShow();
+    var albumapi=new AlbumApi();
+    albumapi.list({},(albums)=>{
+      this.Base.setMyData({albums:albums});
+    });
   }
   goupload() {
     var that = this;
@@ -62,7 +66,8 @@ class Content extends AppBase {
       var api = new AlbumApi();
       api.upload({
         content: path,
-        filetype: "P"
+        filetype:"P",
+        location:that.Base.getMyData().address
       }, (ret) => {
         if (ret.code == "0") {
           wx.showToast({
@@ -78,7 +83,8 @@ class Content extends AppBase {
       var api = new AlbumApi();
       api.upload({
         content: path,
-        filetype: "V"
+        filetype: "V",
+        location: that.Base.getMyData().address
       }, (ret) => {
         if (ret.code == "0") {
           wx.showToast({

@@ -1,0 +1,14 @@
+<!--pages/file/file.wxml-->
+<image style='height:100vh;width:100vw;' src='{{uploadpath}}memberphoto/{{info.content}}' mode='aspectFit' bindlongtap='toggleShowbar' wx:if="{{info.content!=undefined}}"></image>
+<view class='bar flex-row' wx:if="{{showbar==true}}">
+  <view class='flex-1'>
+  <view>{{info.location}}</view>
+  <view>{{info.uploadtime}}</view>
+  </view>
+  <view class='flex-1 text-right' style='padding-top:5px;'>
+    <button open-type='share' class='iconshare'></button>
+    <button wx:if="{{UserInfo.openid==info.member_id_name}}" class='iconshare' bindtap='moveAlbum' style='background-image:url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/6233567f4c3f8df9e6d5176b29e5bdb9_18040513007.png?height=50)'></button>
+    <button  class='iconshare' bindtap='download' style='background-image:url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/6fb53c51539b47559cf0d122a832cf63_18040513013.png?height=50)'></button>
+    <button wx:if="{{UserInfo.openid==info.member_id_name}}"   class='iconshare' bindtap='deletefile' style='background-image:url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/c0283afbab7d3078c3393c3a69916d70_18040513018.png?height=50)'></button>
+  </view>
+</view>

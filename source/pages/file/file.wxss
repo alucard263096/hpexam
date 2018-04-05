@@ -1,0 +1,36 @@
+/* pages/file/file.wxss */
+page{
+  background: black;
+}
+.bar{
+  position: fixed;
+  bottom: 0;
+  background: #111;
+  width: 710rpx;
+  padding:20rpx;
+}
+.bar view{
+  color:white;
+  font-size: 12px;
+}
+.icon{
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 20rpx;
+  margin-top: 10rpx;
+}
+.iconshare{
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 30rpx;
+  background-image: url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/bd5901f59fad2756e4a270c412b61fbc_18040513059.png?height=50);
+  background-size: 100% 100%;
+  display: unset;
+  box-sizing: unset;
+  line-height: unset;
+  border-radius: unset;
+  background-color: transparent;
+  padding-left: 20rpx;
+  padding-right:20rpx;
+  font-size: 15px;
+}

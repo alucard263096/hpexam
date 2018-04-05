@@ -20,3 +20,10 @@ view{
 .white-block{
   background-color: white;
 }
+.black-font{
+  color:black;
+}
+
+.font-primary{
+  color:#50BAFF;
+}
