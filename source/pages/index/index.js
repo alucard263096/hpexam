@@ -61,38 +61,45 @@ class Content extends AppBase {
     });
   }
   clickPhoto() {
-    var that = this;
-    that.Base.takeImage("memberphoto", (path) => {
-      var api = new AlbumApi();
-      api.upload({
-        content: path,
-        filetype:"P",
-        location:that.Base.getMyData().address
-      }, (ret) => {
-        if (ret.code == "0") {
-          wx.navigateTo({
-            url: '../file/file?id=' + ret.return,
-          })
-        }
-      });
-    });
+    // var that = this;
+    // that.Base.takeImage("memberphoto", (path) => {
+    //   var api = new AlbumApi();
+    //   api.upload({
+    //     content: path,
+    //     filetype:"P",
+    //     location:that.Base.getMyData().address
+    //   }, (ret) => {
+    //     if (ret.code == "0") {
+    //       wx.navigateTo({
+    //         url: '../file/file?id=' + ret.return,
+    //       })
+    //     }
+    //   });
+    // });
+    wx.navigateTo({
+      url: '/pages/capture/capture?takingtype=1',
+    })
   }
   clickVideo() {
-    var that = this;
-    that.Base.takeVideo("memberphoto", (path) => {
-      var api = new AlbumApi();
-      api.upload({
-        content: path,
-        filetype: "V",
-        location: that.Base.getMyData().address
-      }, (ret) => {
-        if (ret.code == "0") {
-          wx.navigateTo({
-            url: '../file/file?id=' + ret.return,
-          })
-        }
-      });
-    });
+    // var that = this;
+    // that.Base.takeVideo("memberphoto", (path) => {
+    //   var api = new AlbumApi();
+    //   api.upload({
+    //     content: path,
+    //     filetype: "V",
+    //     location: that.Base.getMyData().address
+    //   }, (ret) => {
+    //     if (ret.code == "0") {
+    //       wx.navigateTo({
+    //         url: '../file/file?id=' + ret.return,
+    //       })
+    //     }
+    //   });
+    // });
+
+    wx.navigateTo({
+      url: '/pages/capture/capture?takingtype=2',
+    })
   }
   addNew(){
     wx.navigateTo({

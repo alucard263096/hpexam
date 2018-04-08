@@ -1,10 +1,10 @@
 {
   "pages":[
+    "pages/capture/capture",
     "pages/index/index",
     "pages/file/file",
     "pages/photo/photo",
     "pages/album/album",
-    "pages/capture/capture",
     "pages/content/content",
     "pages/albums/albums",
     "pages/logs/logs"

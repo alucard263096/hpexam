@@ -1,4 +1,36 @@
-<view class="page-body">
+<view>
+  <camera device-position="{{cameratype}}" binderror="error" style="width: 100vw; height: 80vh;"></camera>
+</view>
+<view class='classborder'>
+  <view class='selectbar' wx:if="{{takingtype==1}}">
+    <text>照片</text>
+    <text class='secondtab' bindtap='changeTakingType' id="2">视频</text>
+  </view>
+  <view class='selectbar' wx:if="{{takingtype==2}}">
+    <text>视频</text>
+    <text class='secondtab' bindtap='changeTakingType' id="1">照片</text>
+  </view>
+  <view class='flex-row' style='margin-top:10px;'>
+    <view class='text-center' style='width:30vw'>
+      <image class='tabsimg' bindtap='backPage' wx:if="{{photos.length==0}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/bc9c60d0aca94a1ed1dfcedae89897b0_18040819024.png" mode="aspectFit"></image>
+
+      <image class='tabsimg'  wx:if="{{photos.length>0}}" src="{{photos[photos.length-1]}}" mode="aspectFit"></image>
+    </view>
+    <view style='width:40vw;' class='text-center'>
+      <view class='clickout' bindtap='takePhoto' wx:if="{{takingtype==1}}">
+        <view class='clickin'></view>
+      </view>
+      <view class='clickout' bindtap='takePhoto' wx:if="{{takingtype==2}}">
+        <view class='{{recording==true?"recording":"record"}}' bindtap='tapRecording'></view>
+      </view>
+
+    </view>
+    <view class='text-center' style='width:30vw'>
+      <image class='tabsimg' bindtap='changeCameraType' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/705ea3d93d85e41483c1c483736e5ee8_18040819018.png" mode="aspectFit"></image>
+    </view>
+  </view>
+</view>
+<view class="page-body" wx:if="{{false}}">
   <view class="page-body-wrapper">
     <camera device-position="back" flash="off" binderror="error" style="width: 100%; height: 300px;"></camera>
     <view class="btn-area">
