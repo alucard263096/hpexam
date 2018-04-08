@@ -1,4 +1,5 @@
 /**index.wxss**/
+
 .container {
   height: 100%;
   display: flex;
@@ -7,71 +8,103 @@
   justify-content: space-between;
   padding: 100rpx 0;
   box-sizing: border-box;
-} 
+}
+
 .userinfo-avatar {
   width: 128rpx;
   height: 128rpx;
-  border:4rpx solid white;
+  border: 4rpx solid white;
   margin: 20rpx;
   border-radius: 50%;
 }
 
 .userinfo-nickname {
   color: white;
-  margin-top:60rpx;
+  margin-top: 60rpx;
 }
 
 .usermotto {
   margin-top: 200px;
 }
 
-.line-change{
-  padding:20rpx;
+.line-change {
+  padding: 20rpx;
   border-radius: 10rpx;
 }
-.line-change image{
+
+.line-change image {
   width: 45rpx;
 }
-.privacy{
+
+.privacy {
   position: fixed;
   bottom: 0vw;
   width: 750rpx;
-  color:#00AAFF;
+  color: #0af;
   border-top: 2px solid #ccc;
+  line-height: 0rpx;
 }
-.privacy view{
-  padding:20rpx;
+
+.privacy .icon {
+  width: 70rpx;
+  height: 70rpx;
+  margin-top: 10rpx;
 }
-.albums{
-  padding:20rpx;
-  padding-right:0rpx;
+
+.privacy .text {
+  font-size: 28rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  color: #50baff;
+}
+
+.albums {
+  padding-left: 30rpx;
+  padding-bottom: 30rpx;
+  padding-right: 0rpx;
   display: flex;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
 }
-.album{
-  width:365rpx;
-  margin-right: 0rpx;
+
+.album {
+  width: 330rpx;
+  margin-top: 30rpx;
+  margin-right: 30rpx;
 }
-.cover{
-  width: 250rpx;
-  height: 250rpx;
-  margin:21rpx;
+
+.cover {
+  border-radius: 10rpx;
+  width: 330rpx;
+  height: 330rpx;
+  background: -webkit-linear-gradient(#f4f4f4, #e5e5e5); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(#f4f4f4, #e5e5e5); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(#f4f4f4, #e5e5e5); /* Firefox 3.6 - 15 */
+  background: linear-gradient(#f4f4f4, #e5e5e5); /* 标准的语法 */
 }
-.addcover{
-  width: 292rpx;
-  height: 292rpx;
+
+.addcover {
+  width: 100rpx;
+  height: 100rpx;
+  margin: 115rpx;
 }
-.descriptionplay{
+.nullcover {
+  width: 100rpx;
+  height: 100rpx;
+  margin: 115rpx;
+}
+
+
+.descriptionplay {
   font-size: 60%;
-  padding:10rpx;
+  padding: 10rpx;
 }
-.edit{
+
+.edit {
   position: relative;
-  width:40rpx;
+  width: 40rpx;
   height: 40rpx;
-  left: 280rpx;
-  top:-45rpx;
+  left: 300rpx;
+  top: -45rpx;
   background-image: url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/d13547f19a8d9fd174454065f96c8696_18040522039.png);
   background-size: 100% 100%;
-  
 }

@@ -15,7 +15,7 @@ class Content extends AppBase {
     }
     var that = this;
     this.ctx = wx.createCameraContext();
-    this.Base.setMyData({ takingtype: takingtype, cameratype: "back", photos: [], recording:false});
+    this.Base.setMyData({ takingtype: takingtype, cameratype: "back", photos: [], recording:false,latestid:0});
   }
   onShow() {
     var that = this;
@@ -37,10 +37,7 @@ class Content extends AppBase {
             filetype: "P",
             location: that.Base.getMyData().address
           }, (ret) => {
-            wx.showModal({
-              title: 'aaa',
-              content: JSON.stringify(ret),
-            })
+            this.Base.setMyData({ latestid: ret.return });
           });
 
         });
@@ -78,10 +75,50 @@ class Content extends AppBase {
     this.Base.setMyData({ cameratype: cameratype});
   }
   tapRecording(){
-
+    var that=this;
     var recording = this.Base.getMyData().recording;
-    recording = !recording;
-    this.Base.setMyData({ recording: recording });
+    if(recording==false){
+      this.ctx.startRecord({
+        success: (res) => {
+          console.log('startRecord')
+        }
+      });
+
+      this.Base.setMyData({ recording: true });
+    }else{
+      this.ctx.stopRecord({
+        success: (res) => {
+          //this.setData({
+          //  src: res.tempThumbPath,
+          //  videoSrc: res.tempVideoPath
+          //})
+
+          var photos = this.Base.getMyData().photos;
+          photos.push(res.tempThumbPath);
+          this.Base.setMyData({ photos: photos });
+
+          this.Base.uploadFile("memberphoto", res.tempVideoPath, (imgurl) => {
+            var api = new AlbumApi();
+            api.upload({
+              content: imgurl,
+              filetype: "V",
+              location: that.Base.getMyData().address
+            }, (ret) => {
+              this.Base.setMyData({ latestid: ret.return });
+            });
+
+          });
+
+        }
+      });
+      this.Base.setMyData({ recording: false });
+    }
+  }
+  gotoFile(){
+    var latestid = this.Base.getMyData().latestid;
+    wx.navigateTo({
+      url: '../../pages/file/file?id='+latestid,
+    })
   }
 }
 var page = new Content();
@@ -95,4 +132,5 @@ body.error = page.error;
 body.changeTakingType = page.changeTakingType; 
 body.changeCameraType = page.changeCameraType;
 body.tapRecording = page.tapRecording;
+body.gotoFile = page.gotoFile;
 Page(body)

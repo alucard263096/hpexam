@@ -1,6 +1,6 @@
 /**app.wxss**/
 page{
-  background: #f2f2f2;
+  background: #fdfdfd;
 }
 view{
   color:#666;

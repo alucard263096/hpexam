@@ -14,13 +14,13 @@
     <view class='text-center' style='width:30vw'>
       <image class='tabsimg' bindtap='backPage' wx:if="{{photos.length==0}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/bc9c60d0aca94a1ed1dfcedae89897b0_18040819024.png" mode="aspectFit"></image>
 
-      <image class='tabsimg'  wx:if="{{photos.length>0}}" src="{{photos[photos.length-1]}}" mode="aspectFit"></image>
+      <image class='tabsimg'  wx:if="{{photos.length>0}}" src="{{photos[photos.length-1]}}" mode="aspectFit" bindtap="gotoFile" ></image>
     </view>
     <view style='width:40vw;' class='text-center'>
       <view class='clickout' bindtap='takePhoto' wx:if="{{takingtype==1}}">
         <view class='clickin'></view>
       </view>
-      <view class='clickout' bindtap='takePhoto' wx:if="{{takingtype==2}}">
+      <view class='clickout'  wx:if="{{takingtype==2}}">
         <view class='{{recording==true?"recording":"record"}}' bindtap='tapRecording'></view>
       </view>
 

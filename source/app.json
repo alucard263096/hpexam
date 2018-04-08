@@ -1,7 +1,7 @@
 {
   "pages":[
-    "pages/capture/capture",
     "pages/index/index",
+    "pages/capture/capture",
     "pages/file/file",
     "pages/photo/photo",
     "pages/album/album",
