@@ -12,9 +12,10 @@
   </view>
   <view class='flex-row' style='margin-top:10px;'>
     <view class='text-center' style='width:30vw'>
-      <image class='tabsimg' bindtap='backPage' wx:if="{{lastimg==''}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/bc9c60d0aca94a1ed1dfcedae89897b0_18040819024.png" mode="aspectFit"></image>
+      <image class='tabsimg' bindtap='backPage' wx:if="{{lastimg==null}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/bc9c60d0aca94a1ed1dfcedae89897b0_18040819024.png" mode="aspectFit"></image>
 
-      <image class='tabsimg'  wx:if="{{lastimg!=''}}" src="{{lastimg}}" mode="aspectFit" bindtap="gotoFile" ></image>
+      <image class='tabsimg'  wx:if="{{lastimg!=null&&lastimg.filetype=='P'}}" src="{{uploadpath}}memberphoto/{{lastimg.content}}" mode="aspectFit" bindtap="gotoFile" ></image>
+      <image class='tabsimg'  wx:if="{{lastimg!=null&&lastimg.filetype=='V'}}" src="{{uploadpath}}memberphoto/{{lastimg.cover}}" mode="aspectFit" bindtap="gotoFile" ></image>
     </view>
     <view style='width:40vw;' class='text-center'>
       <view class='clickout' bindtap='takePhoto' wx:if="{{takingtype==1}}">

@@ -10,13 +10,13 @@ class Content extends AppBase {
     //options.id=5;
     this.Base.Page = this;
     super.onLoad(options);
-    var takingtype=2;
+    var takingtype=1;
     if(options.takingtype!=null){
       takingtype=options.takingtype;
     }
     var that = this;
     this.ctx = wx.createCameraContext();
-    this.Base.setMyData({ takingtype: takingtype, cameratype: "back", photos: [], recording:false,latestid:0,lastimg:""});
+    this.Base.setMyData({ takingtype: takingtype, cameratype: "back", photos: [], recording:false,lastimg:""});
   }
   onShow() {
     var that = this;
@@ -39,7 +39,7 @@ class Content extends AppBase {
             filetype: "P",
             location: that.Base.getMyData().address
           }, (ret) => {
-            this.Base.setMyData({ latestid: ret.return, lastimg: ApiConfig.GetUploadPath()+"memberphoto/"+imgurl });
+            this.Base.setMyData({lastimg: ret.return });
           });
 
         });
@@ -98,18 +98,22 @@ class Content extends AppBase {
           var photos = this.Base.getMyData().photos;
           photos.push(res.tempThumbPath);
           this.Base.setMyData({ photos: photos });
+          this.Base.uploadFile("memberphoto", res.tempThumbPath,(coverimg)=>{
 
-          this.Base.uploadFile("memberphoto", res.tempVideoPath, (imgurl) => {
-            var api = new AlbumApi();
-            api.upload({
-              content: imgurl,
-              filetype: "V",
-              location: that.Base.getMyData().address
-            }, (ret) => {
-              this.Base.setMyData({ latestid: ret.return, lastimg: res.tempThumbPath });
+            this.Base.uploadFile("memberphoto", res.tempVideoPath, (imgurl) => {
+              var api = new AlbumApi();
+              api.upload({
+                content: imgurl,
+                cover: coverimg,
+                filetype: "V",
+                location: that.Base.getMyData().address
+              }, (ret) => {
+                this.Base.setMyData({ lastimg: res.return });
+              });
+
             });
 
-          });
+          })
 
         }
       });
@@ -117,7 +121,7 @@ class Content extends AppBase {
     }
   }
   gotoFile(){
-    var latestid = this.Base.getMyData().latestid;
+    var latestid = this.Base.getMyData().lastimg.id;
     wx.navigateTo({
       url: '../../pages/file/file?id='+latestid,
     })

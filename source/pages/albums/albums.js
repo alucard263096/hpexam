@@ -11,6 +11,7 @@ class Content extends AppBase {
     super.onLoad(options);
 
     var that = this;
+    wx.hideShareMenu();
   }
   onShow() {
     var that = this;

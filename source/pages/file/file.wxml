@@ -7,6 +7,8 @@
   <view>{{info.uploadtime}}</view>
   </view>
   <view class='flex-1 text-right' style='padding-top:5px;'>
+
+    <button wx:if="{{UserInfo.openid==info.member_id_name}}" class='iconshare' bindtap='backHome' style='background-image:url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/e4d8fbf2eaa5db8ff36987ab29ed9b74_18041517057.png)'></button>
     <button open-type='share' class='iconshare'></button>
     <button wx:if="{{UserInfo.openid==info.member_id_name}}" class='iconshare' bindtap='moveAlbum' style='background-image:url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/6233567f4c3f8df9e6d5176b29e5bdb9_18040513007.png?height=50)'></button>
     <button  class='iconshare' bindtap='download' style='background-image:url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/6fb53c51539b47559cf0d122a832cf63_18040513013.png?height=50)'></button>

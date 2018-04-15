@@ -22,7 +22,7 @@ page{
 .iconshare{
   width: 40rpx;
   height: 40rpx;
-  margin-left: 30rpx;
+  margin-left: 20rpx;
   background-image: url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/bd5901f59fad2756e4a270c412b61fbc_18040513059.png?height=50);
   background-size: 100% 100%;
   display: unset;

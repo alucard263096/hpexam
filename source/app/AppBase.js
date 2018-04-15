@@ -538,8 +538,8 @@ export class AppBase {
     });
   }
   backHome() {
-    wx.switchTab({
-      url: '/pages/home/home',
+    wx.redirectTo({
+      url: '/pages/index/index',
     })
   }
   logout() {

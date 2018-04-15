@@ -1,5 +1,5 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/capture/capture",
     "pages/file/file",
@@ -7,12 +7,13 @@
     "pages/album/album",
     "pages/content/content",
     "pages/albums/albums",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/logs/t"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#50BAFF",
     "navigationBarTitleText": "ME相册",
-    "navigationBarTextStyle":"white"
+    "navigationBarTextStyle": "white"
   }
 }

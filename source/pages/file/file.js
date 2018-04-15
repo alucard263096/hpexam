@@ -80,22 +80,63 @@ class Content extends AppBase {
     var info = data.info;
     var url = data.uploadpath + "memberphoto/" + info.content;
 
-
+    console.log("???here0");
     wx.downloadFile({
       url: url, //仅为示例，并非真实的资源
       success: function (res) {
         // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+        console.log("???here1");
         if (res.statusCode === 200) {
           if (data.info.filetype=='P'){
             wx.saveImageToPhotosAlbum({
-              filePath: res.tempFilePath
+              filePath: res.tempFilePath,
+              success() {
+                wx.showToast({
+                  title: '已保存到本地',
+                })
+              },
+              fail(resd) {
+                console.log(res);
+                console.log(resd);
+                //var ext = res.tempFilePath.split(".");
+                //ext=ext[ext.length-1];
+                //wx.showModal({
+                //  title: ext,
+                //  content: resd.errMsg,
+                //})
+                wx.showToast({
+                  title: '保存失败，可能是微信版本导致，请升级后测试',
+                })
+              }
             });
           }else{
+            console.log("???here2");
             wx.saveVideoToPhotosAlbum({
-              filePath: res.tempFilePath
+              filePath: res.tempFilePath,
+              success(){
+                wx.showToast({
+                  title: '已保存到本地',
+                })
+              },
+              fail(resd) {
+                console.log(res);
+                console.log(resd);
+                //var ext = res.tempFilePath.split(".");
+                //ext=ext[ext.length-1];
+                //wx.showModal({
+                //  title: ext,
+                //  content: resd.errMsg,
+                //})
+                wx.showToast({
+                  title: '保存失败，可能是微信版本导致，请升级后测试',
+                })
+              }
             });
           }
         }
+      },
+      fail(res){
+        console.log(res);
       }
     })
 
