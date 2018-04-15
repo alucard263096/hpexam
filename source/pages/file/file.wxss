@@ -11,7 +11,7 @@ page{
 }
 .bar view{
   color:white;
-  font-size: 12px;
+  font-size: 24rpx;
 }
 .icon{
   width: 40rpx;
@@ -32,5 +32,5 @@ page{
   background-color: transparent;
   padding-left: 20rpx;
   padding-right:20rpx;
-  font-size: 15px;
+  font-size: 30rpx;
 }

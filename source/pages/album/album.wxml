@@ -18,8 +18,8 @@
 </view>
 </view>
 
-<view style='margin-top:200px;padding:20px;'>
+<view style='margin-top:400rpx;padding:40rpx;'>
 <button type='primary' bindtap='save'>{{info.id==0?"提交":"修改"}}</button>
-<button type='default' bindtap='back' style='margin-top:20px;'wx:if="{{info.id==0}}">返回</button>
-<button type='warn' bindtap='deletea'  style='margin-top:20px;' wx:if="{{info.id!=0}}">删除</button>
+<button type='default' bindtap='back' style='margin-top:40rpx;'wx:if="{{info.id==0}}">返回</button>
+<button type='warn' bindtap='deletea'  style='margin-top:40rpx;' wx:if="{{info.id!=0}}">删除</button>
 </view>

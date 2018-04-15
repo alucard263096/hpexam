@@ -254,35 +254,29 @@ class Content extends AppBase {
       }
     });
   }
-  onShareAppMessage() {
+  viewPhoto() {
+    var ids = [];
+    var nofiles = [];
     var files = this.Base.getMyData().files;
-    var firstfile=null;
-    var ids=[];
     for (var i = 0; i < files.length; i++) {
       if (files[i].selected == true) {
         ids.push(files[i].id);
-        if(firstfile==null){
-          firstfile = files[i];
-        }
+      } else {
+        nofiles.push(files[i]);
       }
     }
-    var longtype = this.Base.getMyData().longtype;
-    var uploadpath = this.Base.getMyData().uploadpath;
-    this.Base.setMyData({ longtype: false });
-    if (longtype == true && ids.length>0){
-      return {
-        title: 'ME相册图片分享',
-        path: '/pages/file/file?id='+ids.join(","),
-        imageUrl: uploadpath + "memberphoto/" + (firstfile.filetype == "P" ? firstfile.content:firstfile.cover),
-        success: function (res) {
-          // 转发成功
-        },
-        fail: function (res) {
-          // 转发失败
-        }
-      } 
-      
+    if (ids.length == 0) {
+      wx.showModal({
+        title: '提示',
+        content: '请至少选择一个图片查看',
+        showCancel: false
+      })
+      return;
     }
+    wx.navigateTo({
+      url: '/pages/file/file?id=' + ids.join(",")
+    });
+
     
   }
 
@@ -375,6 +369,6 @@ body.photoLong = page.photoLong;
 body.cancelLongtype = page.cancelLongtype; 
 body.deleteFiles = page.deleteFiles; 
 body.moveAlbum = page.moveAlbum;
-body.onShareAppMessage = page.onShareAppMessage;
+body.viewPhoto = page.viewPhoto;
 body.download = page.download;
 Page(body)

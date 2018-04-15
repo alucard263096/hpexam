@@ -1,9 +1,10 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/capture/capture",
-    "pages/file/file",
+    "pages/member/member",
     "pages/photo/photo",
+    "pages/file/file",
+    "pages/capture/capture",
     "pages/album/album",
     "pages/content/content",
     "pages/albums/albums",

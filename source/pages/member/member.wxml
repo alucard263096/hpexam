@@ -1,0 +1,20 @@
+<!--pages/member/member.wxml-->
+<view class="flex-row" style='background:#50BAFF'>
+  <view >
+    <image class="userinfo-avatar" src="{{UserInfo.avatarUrl}}" background-size="cover"></image>
+  </view>
+  <text class="userinfo-nickname">{{UserInfo.nickName}}</text>
+</view>
+
+<view class='white-block block'>
+<navigator url='/pages/albums/albums'  class='item item-split'>我的相册
+<text class='right-sigh'>></text>
+</navigator>
+<view url='/pages/bin/bin' class='item'>回收站
+<text class='right-sigh'>></text></view>
+</view>
+
+
+<view class='white-block block'>
+<navigator url='/pages/content/content?keycode=instruction&title=个人中心'  class='item'>关于我们</navigator>
+</view>

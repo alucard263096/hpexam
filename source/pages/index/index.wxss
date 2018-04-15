@@ -24,7 +24,7 @@
 }
 
 .usermotto {
-  margin-top: 200px;
+  margin-top: 400rpx;
 }
 
 .line-change {
@@ -41,7 +41,7 @@
   bottom: 0vw;
   width: 750rpx;
   color: #0af;
-  border-top: 2px solid #ccc;
+  border-top: 4rpx solid #ccc;
   line-height: 0rpx;
 }
 
@@ -52,9 +52,10 @@
 }
 .iconaaa{
 
-  width: 120rpx;
-  height: 120rpx;
+  width: 100rpx;
+  height: 100rpx;
   margin-top: 10rpx;
+  margin-bottom: 10rpx;
 }
 
 .privacy .text {

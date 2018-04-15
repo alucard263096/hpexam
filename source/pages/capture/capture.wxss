@@ -6,20 +6,20 @@ page view{
   color:white;
 }
 .classborder{
-  border-top: 2px white solid;
+  border-top: 4rpx white solid;
 }
 .selectbar{
-  font-size: 13px;
+  font-size: 26rpx;
   padding:10rpx;
-  padding-left: calc( 50vw - 13px);
+  padding-left: calc( 50vw - 26rpx);
 }
 .secondtab{
-  margin-left: 20px;
+  margin-left: 40rpx;
 }
 .clickout{
   width: 122rpx;
   height:122rpx;
-  border:2px solid white;
+  border:4rpx solid white;
   border-radius: 50%;
   position: fixed;
   left: 310rpx;
@@ -52,4 +52,8 @@ page view{
   width:90rpx;
   height:90rpx;
   margin-top: 20rpx;
+}
+.recordsecond{
+  position: absolute;
+  right:10rpx;
 }

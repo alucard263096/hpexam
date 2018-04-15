@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="flex-row" style='background:#50BAFF'>
-  <navigator url='/pages/content/content?keycode=instruction&title=个人中心'>
+  <navigator url='/pages/member/member?keycode=instruction&title=个人中心'>
     <image class="userinfo-avatar" src="{{UserInfo.avatarUrl}}" background-size="cover"></image>
   </navigator>
   <text class="userinfo-nickname">{{UserInfo.nickName}}</text>
@@ -84,12 +84,12 @@ http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource
         下载
       </view>
     </view>
-    <view class='flex-1'>
+    <view class='flex-1' bindtap='download'>
       <view>
-        <button class='toopsicon btntoopsicon' open-type="share"></button>
+        <image class='toopsicon' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/f378b3bfaeb2fb365302eb29ae5d8bf0_18041520019.png'></image>
       </view>
       <view>
-        分享
+        查看
       </view>
     </view>
     <view class='flex-1' bindtap='deleteFiles'>

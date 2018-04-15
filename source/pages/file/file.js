@@ -6,14 +6,21 @@ class Content extends AppBase {
     super();
   }
   onLoad(options) {
+    //options.id = "103,108,111";
+    //options.id = "104,105";
     this.Base.Page = this;
     super.onLoad(options);
 
     var that = this;
 
     var albumapi = new AlbumApi();
-    albumapi.file({ id: options.id }, (info) => {
-      this.Base.setMyData({ info: info, showbar: true });
+    albumapi.file({ id: options.id }, (ret) => {
+      if(ret.length==0){
+        wx.redirectTo({
+          url: '/pages/index/index',
+        })
+      }
+      this.Base.setMyData({ files: ret,current:0, showbar: true });
     });
   }
   onShow() {
@@ -32,8 +39,8 @@ class Content extends AppBase {
     var that = this;
     var data = that.Base.getMyData();
     var albums = data.albums;
-    var info = data.info;
-
+    var files = data.files;
+    var info = files[0];
     var items = [];
     for (var i = 0; i < albums.length; i++) {
       if (albums[i].id == info.album_id) {
@@ -48,17 +55,18 @@ class Content extends AppBase {
     wx.showActionSheet({
       itemList: items,
       success: function (res) {
-        if (info.album_id == albums[res.tapIndex].id){
+        if (info.album_id == albums[res.tapIndex].id) {
           return;
         }
         var albumapi = new AlbumApi();
-        albumapi.movealbum({file_id:info.id,oldalbum_id:info.album_id,newalbum_id:albums[res.tapIndex].id}, (ret) => {
-          if(ret.code==0){
+        albumapi.movealbum({ file_id: that.Base.options.id, newalbum_id: albums[res.tapIndex].id }, (ret) => {
+          if (ret.code == 0) {
             wx.showToast({
               title: '移动成功',
             });
             info.album_id = albums[res.tapIndex].id;
-            that.Base.setMyData({ info: info });
+            files[0] = info;
+            that.Base.setMyData({ files: files });
 
           } else {
             wx.showToast({
@@ -77,84 +85,67 @@ class Content extends AppBase {
     var that = this;
     var data = that.Base.getMyData();
     var albums = data.albums;
-    var info = data.info;
-    var url = data.uploadpath + "memberphoto/" + info.content;
+    var files = data.files;
 
-    console.log("???here0");
-    wx.downloadFile({
-      url: url, //仅为示例，并非真实的资源
-      success: function (res) {
-        // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
-        console.log("???here1");
-        if (res.statusCode === 200) {
-          if (data.info.filetype=='P'){
-            wx.saveImageToPhotosAlbum({
-              filePath: res.tempFilePath,
-              success() {
-                wx.showToast({
-                  title: '已保存到本地',
-                })
-              },
-              fail(resd) {
-                console.log(res);
-                console.log(resd);
-                //var ext = res.tempFilePath.split(".");
-                //ext=ext[ext.length-1];
-                //wx.showModal({
-                //  title: ext,
-                //  content: resd.errMsg,
-                //})
-                wx.showToast({
-                  title: '保存失败，可能是微信版本导致，请升级后测试',
-                })
-              }
-            });
-          }else{
-            console.log("???here2");
-            wx.saveVideoToPhotosAlbum({
-              filePath: res.tempFilePath,
-              success(){
-                wx.showToast({
-                  title: '已保存到本地',
-                })
-              },
-              fail(resd) {
-                console.log(res);
-                console.log(resd);
-                //var ext = res.tempFilePath.split(".");
-                //ext=ext[ext.length-1];
-                //wx.showModal({
-                //  title: ext,
-                //  content: resd.errMsg,
-                //})
-                wx.showToast({
-                  title: '保存失败，可能是微信版本导致，请升级后测试',
-                })
-              }
-            });
+    for (var i = 0; i < files.length; i++) {
+      var info = files[i];
+      var url = data.uploadpath + "memberphoto/" + info.content;
+
+      wx.downloadFile({
+        url: url, //仅为示例，并非真实的资源
+        success: function (res) {
+          // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+          if (res.statusCode === 200) {
+            if (info.filetype == 'P') {
+              wx.saveImageToPhotosAlbum({
+                filePath: res.tempFilePath,
+                success() {
+                  wx.showToast({
+                    title: '已保存到本地',
+                  })
+                },
+                fail(resd) {
+                  wx.showToast({
+                    title: '保存失败，可能是微信版本导致，请升级后测试',
+                  })
+                }
+              });
+            } else {
+              wx.saveVideoToPhotosAlbum({
+                filePath: res.tempFilePath,
+                success() {
+                  wx.showToast({
+                    title: '已保存到本地',
+                  })
+                },
+                fail(resd) {
+                  wx.showToast({
+                    title: '保存失败，可能是微信版本导致，请升级后测试',
+                  })
+                }
+              });
+            }
           }
+        },
+        fail(res) {
+          console.log(res);
         }
-      },
-      fail(res){
-        console.log(res);
-      }
-    })
-
+      })
+    }
   }
-  deletefile(){
+  deletefile() {
     var that = this;
     var data = that.Base.getMyData();
     var albums = data.albums;
-    var info = data.info;
 
     wx.showModal({
       title: '提示',
       content: '确认删除后将无法找回，是否确认？',
-      success(res){
-        if(res.confirm){
+      success(res) {
+        if (res.confirm) {
 
           var albumapi = new AlbumApi();
-          albumapi.deletephoto({ idlist: info.id, album_id: info.album_id }, (ret) => {
+          albumapi.deletephoto({ idlist: that.Base.options.id, album_id: info.album_id }, (ret) => {
             if (ret.code == 0) {
               wx.showToast({
                 title: '删除成功',
@@ -169,13 +160,17 @@ class Content extends AppBase {
     })
 
   }
+  changeFileIndex(e){
+    this.Base.setMyData({current:e.detail.current});
+  }
 }
 var page = new Content();
 var body = page.generateBodyJson();
 body.onLoad = page.onLoad;
 body.onShow = page.onShow;
 body.toggleShowbar = page.toggleShowbar;
-body.moveAlbum = page.moveAlbum;
+body.moveAlbum = page.moveAlbum; 
 body.download = page.download;
 body.deletefile = page.deletefile;
+body.changeFileIndex = page.changeFileIndex;
 Page(body)

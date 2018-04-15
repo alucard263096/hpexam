@@ -10,13 +10,17 @@ class Content extends AppBase {
     //options.id=5;
     this.Base.Page = this;
     super.onLoad(options);
-    var takingtype=1;
+    var takingtype=2;
     if(options.takingtype!=null){
       takingtype=options.takingtype;
     }
     var that = this;
     this.ctx = wx.createCameraContext();
-    this.Base.setMyData({ takingtype: takingtype, cameratype: "back", photos: [], recording:false,lastimg:""});
+    this.Base.setMyData({ takingtype: takingtype, cameratype: "back", photos: [], recording:false,lastimg:null,second:0});
+
+    wx.hideShareMenu({
+      
+    })
   }
   onShow() {
     var that = this;
@@ -47,23 +51,6 @@ class Content extends AppBase {
       }
     })
   }
-  startRecord() {
-    this.ctx.startRecord({
-      success: (res) => {
-        console.log('startRecord')
-      }
-    })
-  }
-  stopRecord() {
-    this.ctx.stopRecord({
-      success: (res) => {
-        this.setData({
-          src: res.tempThumbPath,
-          videoSrc: res.tempVideoPath
-        })
-      }
-    })
-  }
   error(e) {
     console.log(e.detail)
   }
@@ -82,7 +69,52 @@ class Content extends AppBase {
     if(recording==false){
       this.ctx.startRecord({
         success: (res) => {
-          console.log('startRecord')
+          console.log('startRecord');
+          that.Base.setMyData({ second: 0 });
+          recondingtimer = setInterval(function () {
+            var second = that.Base.getMyData().second;
+            if (second == 10) {
+              //that.Base.tapRecording();
+              //clearInterval(recondingtimer);
+
+              that.ctx.stopRecord({
+                success: (res) => {
+                  //this.setData({
+                  //  src: res.tempThumbPath,
+                  //  videoSrc: res.tempVideoPath
+                  //})
+                  clearInterval(recondingtimer);
+                  var photos = that.Base.getMyData().photos;
+                  photos.push(res.tempThumbPath);
+                  that.Base.setMyData({ photos: photos });
+                  that.Base.uploadFile("memberphoto", res.tempThumbPath, (coverimg) => {
+
+                    that.Base.uploadFile("memberphoto", res.tempVideoPath, (imgurl) => {
+                      var api = new AlbumApi();
+                      api.upload({
+                        content: imgurl,
+                        cover: coverimg,
+                        filetype: "V",
+                        location: that.Base.getMyData().address
+                      }, (ret) => {
+                        that.Base.setMyData({ lastimg: ret.return });
+                      });
+
+                    });
+
+                  });
+
+                }
+              });
+              that.Base.setMyData({ recording: false });
+
+
+
+              return;
+            }
+            second++;
+            that.Base.setMyData({ second: second });
+          }, 1000);
         }
       });
 
@@ -94,7 +126,7 @@ class Content extends AppBase {
           //  src: res.tempThumbPath,
           //  videoSrc: res.tempVideoPath
           //})
-
+          clearInterval(recondingtimer);
           var photos = this.Base.getMyData().photos;
           photos.push(res.tempThumbPath);
           this.Base.setMyData({ photos: photos });
@@ -108,12 +140,12 @@ class Content extends AppBase {
                 filetype: "V",
                 location: that.Base.getMyData().address
               }, (ret) => {
-                this.Base.setMyData({ lastimg: res.return });
+                this.Base.setMyData({ lastimg: ret.return });
               });
 
             });
 
-          })
+          });
 
         }
       });
@@ -127,13 +159,15 @@ class Content extends AppBase {
     })
   }
 }
+
+var recondingtimer=null;
+
+
 var page = new Content();
 var body = page.generateBodyJson();
 body.onLoad = page.onLoad; 
 body.onShow = page.onShow;
 body.takePhoto = page.takePhoto;
-body.startRecord = page.startRecord;
-body.stopRecord = page.stopRecord; 
 body.error = page.error;
 body.changeTakingType = page.changeTakingType; 
 body.changeCameraType = page.changeCameraType;

@@ -1,17 +1,22 @@
 <!--pages/file/file.wxml-->
-<image style='height:calc(100vh - {{showbar==true?"52px":"0px"}});width:100vw;' src='{{uploadpath}}memberphoto/{{info.content}}' mode='aspectFit' bindlongtap='toggleShowbar' wx:if="{{info.content!=undefined}}"  wx:if="{{info.filetype=='P'}}"></image>
-<video style='height:calc(100vh - {{showbar==true?"52px":"0px"}});width:100vw;' src='{{uploadpath}}memberphoto/{{info.content}}' mode='aspectFit' bindlongtap='toggleShowbar' wx:if="{{info.content!=undefined}}"  loop='{{false}}'  wx:if="{{info.filetype=='V'}}" autoplay='true' objectFit='cover' ></video>
+<swiper style='height:calc(100vh - {{showbar==true?"104rpx":"0rpx"}});width:100vw;' bindchange='changeFileIndex'>
+<swiper-item wx:for="{{files}}" wx:key="kl" >
+<image style='height:calc(100vh - {{showbar==true?"104rpx":"0rpx"}});width:100vw;' src='{{uploadpath}}memberphoto/{{item.content}}' mode='aspectFit' wx:if="{{item.content!=undefined}}" wx:if="{{item.filetype=='P'}}"></image>
+<video style='height:calc(100vh - {{showbar==true?"104rpx":"0rpx"}});width:100vw;' src='{{uploadpath}}memberphoto/{{item.content}}' mode='aspectFit'  wx:if="{{item.content!=undefined}}" loop='{{false}}' wx:if="{{item.filetype=='V'}}"
+  autoplay='{{files.length==1}}' objectFit='cover'></video>
+  </swiper-item>
+</swiper>
 <view class='bar flex-row' wx:if="{{showbar==true}}">
   <view class='flex-1'>
-  <view style='overflow:hidden;heigh:16px;white-space: nowrap;text-overflow:ellipsis;'>{{info.location}}</view>
-  <view>{{info.uploadtime}}</view>
+    <view style='overflow:hidden;heigh:32rpx;white-space: nowrap;text-overflow:ellipsis;'>{{files[current].location}}</view>
+    <view>{{files[current].uploadtime}}</view>
   </view>
-  <view class='flex-1 text-right' style='padding-top:5px;'>
+  <view class='flex-1 text-right' style='padding-top:10rpx;'>
 
-    <button wx:if="{{UserInfo.openid==info.member_id_name}}" class='iconshare' bindtap='backHome' style='background-image:url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/e4d8fbf2eaa5db8ff36987ab29ed9b74_18041517057.png)'></button>
+    <button wx:if="{{UserInfo.openid==files[0].member_id_name}}" class='iconshare' bindtap='backHome' style='background-image:url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/e4d8fbf2eaa5db8ff36987ab29ed9b74_18041517057.png)'></button>
     <button open-type='share' class='iconshare'></button>
-    <button wx:if="{{UserInfo.openid==info.member_id_name}}" class='iconshare' bindtap='moveAlbum' style='background-image:url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/6233567f4c3f8df9e6d5176b29e5bdb9_18040513007.png?height=50)'></button>
-    <button  class='iconshare' bindtap='download' style='background-image:url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/6fb53c51539b47559cf0d122a832cf63_18040513013.png?height=50)'></button>
-    <button wx:if="{{UserInfo.openid==info.member_id_name}}"   class='iconshare' bindtap='deletefile' style='background-image:url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/c0283afbab7d3078c3393c3a69916d70_18040513018.png?height=50)'></button>
+    <button wx:if="{{UserInfo.openid==files[0].member_id_name}}" class='iconshare' bindtap='moveAlbum' style='background-image:url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/6233567f4c3f8df9e6d5176b29e5bdb9_18040513007.png?height=50)'></button>
+    <button class='iconshare' bindtap='download' style='background-image:url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/6fb53c51539b47559cf0d122a832cf63_18040513013.png?height=50)'></button>
+    <button wx:if="{{UserInfo.openid==files[0].member_id_name}}" class='iconshare' bindtap='deletefile' style='background-image:url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/c0283afbab7d3078c3393c3a69916d70_18040513018.png?height=50)'></button>
   </view>
 </view>

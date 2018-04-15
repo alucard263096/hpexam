@@ -5,7 +5,7 @@
 <view style='font-size:48rpx;'>
 {{title}}
 </view>
-<view style='margin-top:30px;color:#666;font-size:28rpx;'>
+<view style='margin-top:60rpx;color:#666;font-size:28rpx;'>
 <template is="wxParse" data="{{wxParseData:content.nodes}}" />
 </view>
 

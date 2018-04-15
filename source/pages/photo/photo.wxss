@@ -1,11 +1,12 @@
 /* pages/photo/photo.wxss */
 .title{
-  font-size: 14px;
+  font-size: 28rpx;
   padding: 20rpx;
 }
 .photo{
   width: 142rpx;
   margin-right:8rpx;
+  margin-top:8rpx;
   height: 142rpx;
 }
 .privacy{
@@ -13,10 +14,7 @@
   bottom: 0vw;
   width: 750rpx;
   color:#00AAFF;
-  border-top: 2px solid #ccc;
-}
-.privacy view{
-  padding:20rpx;
+  border-top: 4rpx solid #ccc;
 }
 .picicon{
   position: fixed;
@@ -40,4 +38,79 @@
   padding: 20rpx;
   background:#50BAFF;
   border-radius: 50%;
+}
+
+
+.selected{
+  background-color: white;
+  background-image: url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/575c73f2f46d0b3634adb44d384d9650_18041519045.png);
+  background-size: 100% 100%;
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  position: absolute;
+  margin-top: -60rpx;
+  margin-left: 100rpx;
+}
+.unselected{
+    border: white 2rpx solid;
+  background-color: rgba(200, 200, 200, 0.5);
+  background-size: 100% 100%;
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  position: absolute;
+  margin-top: -60rpx;
+  margin-left: 100rpx;
+}
+.tooltips{
+  padding-left: 120rpx;
+  padding-right: 120rpx;
+  font-size: 20rpx;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+}
+.tooltipsfix{
+  width: 510rpx;
+}
+.toopsicon{
+  width: 40rpx;
+  height: 40rpx;
+  border: #cccccc 2rpx solid;
+  border-radius: 50%;
+  margin-bottom: 20rpx;
+  padding:10rpx;
+}
+.btntoopsicon{
+
+  width: 64rpx;
+  height: 64rpx;
+  background-image:url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/f378b3bfaeb2fb365302eb29ae5d8bf0_18041520019.png);
+  background-size: 70% 70%;
+  background-repeat: no-repeat;
+  background-position: 10rpx 10rpx;
+
+}
+.toolbar{
+  background: #eee;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+}
+.iconaae{
+  font-size: 28rpx;
+  margin-right: 80rpx;
+}
+.icbc{
+  width:40rpx;
+  height:40rpx;
+  position: absolute;
+  margin-top: 10rpx;
+  margin-left: -45rpx;
+}
+.icbc2{
+  width:36rpx;
+  height:36rpx;
+  position: absolute;
+  margin-top: 10rpx;
+  margin-left: -45rpx;
 }
