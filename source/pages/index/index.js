@@ -17,7 +17,7 @@ class Content extends AppBase {
     super.onShow();
     var api = new AlbumApi();
     api.tempfile({album_id:0},(ret)=>{
-       this.Base.setMyData({ albums:ret});
+      this.Base.setMyData({ albums: ret, showtype:"P"});
      });
   }
   goupload() {
@@ -76,9 +76,10 @@ class Content extends AppBase {
     //     }
     //   });
     // });
-    wx.navigateTo({
-      url: '/pages/capture/capture?takingtype=1',
-    })
+    //wx.navigateTo({
+    //  url: '/pages/capture/capture?takingtype=1',
+    //})
+    this.Base.setMyData({  showtype: "P" });
   }
   clickVideo() {
     // var that = this;
@@ -97,9 +98,11 @@ class Content extends AppBase {
     //   });
     // });
 
-    wx.navigateTo({
-      url: '/pages/capture/capture?takingtype=2',
-    })
+    //wx.navigateTo({
+    //  url: '/pages/capture/capture?takingtype=2',
+    //})
+
+    this.Base.setMyData({ showtype: "V" });
   }
 }
 var page = new Content();

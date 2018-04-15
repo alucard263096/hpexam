@@ -12,7 +12,7 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#50BAFF",
-    "navigationBarTitleText": "me相册",
+    "navigationBarTitleText": "ME相册",
     "navigationBarTextStyle":"white"
   }
 }

@@ -15,19 +15,13 @@
 
 <view class='albums flex-row' wx:if="{{showtype=='P'}}">
   <view class='album ' wx:for="{{albums}}" wx:key="k" wx:if="{{item.filetype=='P'}}">
-    <image class='cover' mode='aspectFill' bindtap='openFile' id="{{item.id}}" wx:if="{{item.lastfileinfo.filetype=='P'}}" src='{{uploadpath}}memberphoto/{{item.lastfileinfo.content}}'></image>
-    <view class='cover' wx:if="{{item.lastfileinfo.id==0}}"  >
-      <image class='nullcover' mode='aspectFill' bindtap='openPhotos' id="{{item.id}}" src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/26c5a6b28bde5ac1515e4275b42a6223_18040901018.png'></image>
-    </view>
+    <image class='cover' mode='aspectFill' bindtap='openFile' id="{{item.id}}" wx:if="{{item.filetype=='P'}}" src='{{uploadpath}}memberphoto/{{item.content}}'></image>
   </view>
 </view>
 
 <view class='albums flex-row' wx:if="{{showtype=='V'}}">
   <view class='album ' wx:for="{{albums}}" wx:key="k" wx:if="{{item.filetype=='V'}}">
-    <image class='cover' mode='aspectFill' bindtap='openFile' id="{{item.id}}"  src='{{uploadpath}}memberphoto/{{item.lastfileinfo.content}}'></image>
-    <view class='cover' wx:if="{{item.lastfileinfo.id==0}}"  >
-      <image class='nullcover' mode='aspectFill' bindtap='openPhotos' id="{{item.id}}" src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/26c5a6b28bde5ac1515e4275b42a6223_18040901018.png'></image>
-    </view>
+    <image class='cover' mode='aspectFill' bindtap='openFile' id="{{item.id}}"  src='{{uploadpath}}memberphoto/{{item.cover}}'></image>
   </view>
 </view>
 

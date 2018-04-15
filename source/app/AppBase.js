@@ -130,8 +130,8 @@ export class AppBase {
               console.log(userres);
 
               var memberapi = new MemberApi();
+              
               memberapi.getuserinfo({ code: res.code, grant_type: "authorization_code" }, data => {
-                console.log("here");
                 console.log(data);
                 AppBase.UserInfo.openid = data.openid;
                 AppBase.UserInfo.session_key = data.session_key;
