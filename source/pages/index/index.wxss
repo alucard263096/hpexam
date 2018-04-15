@@ -103,8 +103,8 @@
   position: relative;
   width: 40rpx;
   height: 40rpx;
-  left: 300rpx;
-  top: -45rpx;
+  left: 296rpx;
+  top: -40rpx;
   background-image: url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/d13547f19a8d9fd174454065f96c8696_18040522039.png);
   background-size: 100% 100%;
 }

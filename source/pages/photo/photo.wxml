@@ -3,7 +3,7 @@
   <view class='title'>{{item.name}}</view>
   <view>
     <image mode='aspectFill' bindtap='gotoPhoto' id="{{item.id}}" wx:for="{{item.vals}}" wx:key="aa" class='photo' src="{{uploadpath}}memberphoto/{{item.content}}" wx:if="{{item.filetype=='P'}}"></image>
-    <video objectFit='cover' show-center-play-btn="{{false}}" bindtap='gotoPhoto' id="{{item.id}}" wx:for="{{item.vals}}" wx:key="aa" class='photo' src="{{uploadpath}}memberphoto/{{item.content}}" wx:if="{{item.filetype=='V'}}"  controls='{{false}}'></video>
+    <video objectFit='contain'  bindtap='gotoPhoto' id="{{item.id}}" wx:for="{{item.vals}}" wx:key="aa" class='photo' src="{{uploadpath}}memberphoto/{{item.content}}" wx:if="{{item.filetype=='V'}}" loop='{{false}}' ></video>
   </view>
 </view>
 

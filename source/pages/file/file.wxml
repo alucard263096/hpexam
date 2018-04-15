@@ -1,6 +1,6 @@
 <!--pages/file/file.wxml-->
 <image style='height:calc(100vh - {{showbar==true?"52px":"0px"}});width:100vw;' src='{{uploadpath}}memberphoto/{{info.content}}' mode='aspectFit' bindlongtap='toggleShowbar' wx:if="{{info.content!=undefined}}"  wx:if="{{info.filetype=='P'}}"></image>
-<video style='height:calc(100vh - {{showbar==true?"52px":"0px"}});width:100vw;' src='{{uploadpath}}memberphoto/{{info.content}}' mode='aspectFit' bindlongtap='toggleShowbar' wx:if="{{info.content!=undefined}}"  wx:if="{{info.filetype=='V'}}" autoplay='true' objectFit='cover' ></video>
+<video style='height:calc(100vh - {{showbar==true?"52px":"0px"}});width:100vw;' src='{{uploadpath}}memberphoto/{{info.content}}' mode='aspectFit' bindlongtap='toggleShowbar' wx:if="{{info.content!=undefined}}"  loop='{{false}}'  wx:if="{{info.filetype=='V'}}" autoplay='true' objectFit='cover' ></video>
 <view class='bar flex-row' wx:if="{{showbar==true}}">
   <view class='flex-1'>
   <view style='overflow:hidden;heigh:16px;white-space: nowrap;text-overflow:ellipsis;'>{{info.location}}</view>

@@ -1,4 +1,5 @@
 import { AppBase } from "../../app/AppBase";
+import { ApiConfig } from '../../apis/apiconfig';
 import { AlbumApi } from '../../apis/album.api';
 
 class Content extends AppBase {
@@ -15,7 +16,7 @@ class Content extends AppBase {
     }
     var that = this;
     this.ctx = wx.createCameraContext();
-    this.Base.setMyData({ takingtype: takingtype, cameratype: "back", photos: [], recording:false,latestid:0});
+    this.Base.setMyData({ takingtype: takingtype, cameratype: "back", photos: [], recording:false,latestid:0,lastimg:""});
   }
   onShow() {
     var that = this;
@@ -32,12 +33,13 @@ class Content extends AppBase {
 
         this.Base.uploadFile("memberphoto", res.tempImagePath, (imgurl)=>{
           var api = new AlbumApi();
+          
           api.upload({
             content: imgurl,
             filetype: "P",
             location: that.Base.getMyData().address
           }, (ret) => {
-            this.Base.setMyData({ latestid: ret.return });
+            this.Base.setMyData({ latestid: ret.return, lastimg: ApiConfig.GetUploadPath()+"memberphoto/"+imgurl });
           });
 
         });
@@ -104,7 +106,7 @@ class Content extends AppBase {
               filetype: "V",
               location: that.Base.getMyData().address
             }, (ret) => {
-              this.Base.setMyData({ latestid: ret.return });
+              this.Base.setMyData({ latestid: ret.return, lastimg: res.tempThumbPath });
             });
 
           });

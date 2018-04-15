@@ -1,21 +1,12 @@
 <!--pages/content/content.wxml-->
 <import src="../../wxParse/wxParse.wxml" />
-<view class="page">
-  <view class="page__bd">
+<view class='container'>
 
-    <view class="weui-article">
-      <view class="weui-article__h1">{{title}}</view>
-      <view class="weui-article__section">
-        <view class="weui-article__section">
-          <view class="weui-article__p">
-            <template is="wxParse" data="{{wxParseData:content.nodes}}" />
-          </view>
-        </view>
-      </view>
-    </view>
+<view style='font-size:48rpx;'>
+{{title}}
+</view>
+<view style='margin-top:30px;color:#666;font-size:28rpx;'>
+<template is="wxParse" data="{{wxParseData:content.nodes}}" />
+</view>
 
-
-
-
-  </view>
 </view>

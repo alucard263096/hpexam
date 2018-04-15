@@ -86,9 +86,15 @@ class Content extends AppBase {
       success: function (res) {
         // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
         if (res.statusCode === 200) {
-          wx.saveImageToPhotosAlbum({
-            filePath: res.tempFilePath
-          });
+          if (data.info.filetype=='P'){
+            wx.saveImageToPhotosAlbum({
+              filePath: res.tempFilePath
+            });
+          }else{
+            wx.saveVideoToPhotosAlbum({
+              filePath: res.tempFilePath
+            });
+          }
         }
       }
     })
@@ -99,17 +105,28 @@ class Content extends AppBase {
     var data = that.Base.getMyData();
     var albums = data.albums;
     var info = data.info;
-    var albumapi = new AlbumApi();
-    albumapi.deletephoto({ idlist:info.id,album_id:info.album_id},(ret)=>{
-      if(ret.code==0){
-        wx.showToast({
-          title: '删除成功',
-        })
-        wx.navigateBack({
-          
-        })
+
+    wx.showModal({
+      title: '提示',
+      content: '确认删除后将无法找回，是否确认？',
+      success(res){
+        if(res.confirm){
+
+          var albumapi = new AlbumApi();
+          albumapi.deletephoto({ idlist: info.id, album_id: info.album_id }, (ret) => {
+            if (ret.code == 0) {
+              wx.showToast({
+                title: '删除成功',
+              })
+              wx.navigateBack({
+
+              })
+            }
+          });
+        }
       }
-    });
+    })
+
   }
 }
 var page = new Content();

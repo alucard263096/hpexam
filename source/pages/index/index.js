@@ -15,10 +15,10 @@ class Content extends AppBase {
   onShow() {
     var that = this;
     super.onShow();
-    var albumapi=new AlbumApi();
-    albumapi.list({},(albums)=>{
-      this.Base.setMyData({albums:albums});
-    });
+    var api = new AlbumApi();
+    api.tempfile({album_id:0},(ret)=>{
+       this.Base.setMyData({ albums:ret});
+     });
   }
   goupload() {
     var that = this;
@@ -101,25 +101,6 @@ class Content extends AppBase {
       url: '/pages/capture/capture?takingtype=2',
     })
   }
-  addNew(){
-    wx.navigateTo({
-      url: '../album/album',
-    })
-  }
-  openAlbum(e){
-    console.log(e);
-    var id=e.currentTarget.id;
-    wx.navigateTo({
-      url: '../album/album?id='+id,
-    })
-  }
-  openPhotos(e){
-
-    var id = e.currentTarget.id;
-    wx.navigateTo({
-      url: '../photo/photo?album_id=' + id,
-    })
-  }
 }
 var page = new Content();
 var body = page.generateBodyJson();
@@ -128,7 +109,4 @@ body.onShow = page.onShow;
 body.goupload = page.goupload;
 body.clickPhoto = page.clickPhoto; 
 body.clickVideo = page.clickVideo; 
-body.addNew = page.addNew; 
-body.openAlbum = page.openAlbum;
-body.openPhotos = page.openPhotos;
 Page(body)

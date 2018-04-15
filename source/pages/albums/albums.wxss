@@ -1,1 +1,52 @@
 /* pages/albums/albums.wxss */
+
+.albums {
+  padding-left: 30rpx;
+  padding-bottom: 30rpx;
+  padding-right: 0rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.album {
+  width: 330rpx;
+  margin-top: 30rpx;
+  margin-right: 30rpx;
+}
+
+.cover {
+  border-radius: 10rpx;
+  width: 330rpx;
+  height: 330rpx;
+  background: -webkit-linear-gradient(#f4f4f4, #e5e5e5); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(#f4f4f4, #e5e5e5); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(#f4f4f4, #e5e5e5); /* Firefox 3.6 - 15 */
+  background: linear-gradient(#f4f4f4, #e5e5e5); /* 标准的语法 */
+}
+
+.addcover {
+  width: 100rpx;
+  height: 100rpx;
+  margin: 115rpx;
+}
+.nullcover {
+  width: 100rpx;
+  height: 100rpx;
+  margin: 115rpx;
+}
+
+
+.descriptionplay {
+  font-size: 60%;
+  padding: 10rpx;
+}
+
+.edit {
+  position: relative;
+  width: 40rpx;
+  height: 40rpx;
+  left: 296rpx;
+  top: -40rpx;
+  background-image: url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/d13547f19a8d9fd174454065f96c8696_18040522039.png);
+  background-size: 100% 100%;
+}

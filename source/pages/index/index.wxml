@@ -1,30 +1,33 @@
 <!--index.wxml-->
 <view class="flex-row" style='background:#50BAFF'>
+  <navigator url='/pages/content/content?keycode=instruction&title=个人中心'>
   <image class="userinfo-avatar" src="{{UserInfo.avatarUrl}}" background-size="cover"></image>
+  </navigator>
   <text class="userinfo-nickname">{{UserInfo.nickName}}</text>
 </view>
-<view url='/pages/albums/albums' class='flex-row white-block line-change'>
+
+<navigator url='/pages/albums/albums' class='flex-row white-block line-change'>
   <view class='flex-1' style='font-size:32rpx;'>日记</view>
   <view class='flex-1 text-right'>
-    <!--<image mode='widthFix' style='margin-top:6rpx;' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/3cd93307e5f11403d819d45df5b70145_18040500042.png"></image>-->
+    <image mode='widthFix' style='margin-top:3rpx;' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/e0e3d610c3fe61e1baffdf5d001f6f18_18041311050.png"></image>
+  </view>
+</navigator>
+
+<view class='albums flex-row' wx:if="{{showtype=='P'}}">
+  <view class='album ' wx:for="{{albums}}" wx:key="k" wx:if="{{item.filetype=='P'}}">
+    <image class='cover' mode='aspectFill' bindtap='openFile' id="{{item.id}}" wx:if="{{item.lastfileinfo.filetype=='P'}}" src='{{uploadpath}}memberphoto/{{item.lastfileinfo.content}}'></image>
+    <view class='cover' wx:if="{{item.lastfileinfo.id==0}}"  >
+      <image class='nullcover' mode='aspectFill' bindtap='openPhotos' id="{{item.id}}" src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/26c5a6b28bde5ac1515e4275b42a6223_18040901018.png'></image>
+    </view>
   </view>
 </view>
 
-<view class='albums flex-row'>
-  <view class='album  '>
-    <view class='cover'>
-      <image class='addcover' bindtap='addNew' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/e99e171642970203f557f402fd03f85a_18040901018.png'></image>
+<view class='albums flex-row' wx:if="{{showtype=='V'}}">
+  <view class='album ' wx:for="{{albums}}" wx:key="k" wx:if="{{item.filetype=='V'}}">
+    <image class='cover' mode='aspectFill' bindtap='openFile' id="{{item.id}}"  src='{{uploadpath}}memberphoto/{{item.lastfileinfo.content}}'></image>
+    <view class='cover' wx:if="{{item.lastfileinfo.id==0}}"  >
+      <image class='nullcover' mode='aspectFill' bindtap='openPhotos' id="{{item.id}}" src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/26c5a6b28bde5ac1515e4275b42a6223_18040901018.png'></image>
     </view>
-    <view class='descriptionplay'>添加相册</view>
-  </view>
-  <view class='album ' wx:for="{{albums}}" wx:key="k">
-    <image class='cover' mode='aspectFill' bindtap='openPhotos' id="{{item.id}}" wx:if="{{item.lastfileinfo.filetype=='P'}}" src='{{uploadpath}}memberphoto/{{item.lastfileinfo.content}}'></image>
-    <video class='cover' objectFit='cover' bindtap='openPhotos' show-center-play-btn="{{false}}" id="{{item.id}}" wx:if="{{item.lastfileinfo.filetype=='V'}}" src='{{uploadpath}}memberphoto/{{item.lastfileinfo.content}}' controls='{{false}}'></video>
-    <view class='cover'>
-      <image class='nullcover' mode='aspectFill' bindtap='openPhotos' id="{{item.id}}" wx:if="{{item.lastfileinfo.id==''}}" src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/26c5a6b28bde5ac1515e4275b42a6223_18040901018.png'></image>
-    </view>
-    <view class='descriptionplay {{item.isdefault=="Y"?"font-primary":""}} '>{{item.name}}</view>
-    <view class='edit' bindtap='openAlbum' id="{{item.id}}"></view>
   </view>
 </view>
 

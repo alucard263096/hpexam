@@ -14,13 +14,14 @@ class Content extends AppBase {
     super.onLoad(options);
   }
   onShow(){
-    var keycode=this.Base.options.keycode;
+    var keycode = this.Base.options.keycode;
+    var title = this.Base.options.title;
     var contentapi = new ContentApi();
     var that = this;
     contentapi.geta({ keycode: keycode}, function (data) {
-      if (data == false) {
+      if (data == false||data==null) {
         WxParse.wxParse('content', 'html', "请去后台设置文字内容", that, 10);
-        that.setData({ title: keycode });
+        that.setData({ title: title });
       }else{
 
         data.content = that.Base.util.HtmlDecode(data.content);

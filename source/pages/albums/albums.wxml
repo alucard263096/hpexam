@@ -1,1 +1,19 @@
 <!--pages/albums/albums.wxml-->
+
+<view class='albums flex-row'>
+  <view class='album  '>
+    <view class='cover'>
+      <image class='addcover' bindtap='addNew' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/e99e171642970203f557f402fd03f85a_18040901018.png'></image>
+    </view>
+    <view class='descriptionplay'>添加相册</view>
+  </view>
+  <view class='album ' wx:for="{{albums}}" wx:key="k">
+    <image class='cover' mode='aspectFill' bindtap='openPhotos' id="{{item.id}}" wx:if="{{item.lastfileinfo.filetype=='P'}}" src='{{uploadpath}}memberphoto/{{item.lastfileinfo.content}}'></image>
+    <video class='cover' objectFit='cover' bindtap='openPhotos'  id="{{item.id}}" wx:if="{{item.lastfileinfo.filetype=='V'}}" src='{{uploadpath}}memberphoto/{{item.lastfileinfo.content}}'></video>
+    <view class='cover' wx:if="{{item.lastfileinfo.id==0}}"  >
+      <image class='nullcover' mode='aspectFill' bindtap='openPhotos' id="{{item.id}}" src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/26c5a6b28bde5ac1515e4275b42a6223_18040901018.png'></image>
+    </view>
+    <view class='descriptionplay {{item.isdefault=="Y"?"font-primary":""}} '>{{item.name}}</view>
+    <view class='edit' bindtap='openAlbum' id="{{item.id}}"></view>
+  </view>
+</view>
