@@ -10,7 +10,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "1.9.91",
 	"appid": "wxff23e3e96e8aa21a",
-	"projectname": "%E8%AF%84%E6%B5%8B%E9%A2%98%E5%BA%93",
+	"projectname": "tiku2",
 	"isGameTourist": false,
 	"condition": {
 		"search": {

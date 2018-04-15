@@ -3,7 +3,7 @@ export class ApiConfig{
     return "https://cmsdev.app-link.org/alucard263096/hpexam/api/";
   }
   static GetUploadPath() {
-    return "http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/hpexam/";
+    return "https://cmsdev.app-link.org/alucard263096/hpexam/upload/";
   } 
   static GetFileUploadAPI() {
     return "https://cmsdev.app-link.org/alucard263096/hpexam/fileupload";

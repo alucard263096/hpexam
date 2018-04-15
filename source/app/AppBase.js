@@ -88,7 +88,7 @@ export class AppBase {
     console.log(options);
     console.log("onload");
     this.Base.setBasicInfo();
-    this.Base.setMyData({});
+    this.Base.setMyData({ });
 
   }
   gotoOpenUserInfoSetting(){
