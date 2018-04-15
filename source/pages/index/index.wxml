@@ -35,6 +35,11 @@
     </view>
     <view class='text'>照片</view>
   </view>
+  <view class='flex-1 text-center' bindtap='clickTaking'>
+    <view>
+      <image class="iconaaa" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/57d54b2fbe83bb0c38861a44d241a2df_18040901056.png"></image>
+    </view>
+  </view>
   <view class='flex-1 text-center' bindtap='clickVideo'>
     <view>
       <image class="icon" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/f2f6e71560e0ef1b2e79426c39115753_18040901039.png"></image>

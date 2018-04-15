@@ -50,6 +50,12 @@
   height: 70rpx;
   margin-top: 10rpx;
 }
+.iconaaa{
+
+  width: 120rpx;
+  height: 120rpx;
+  margin-top: 10rpx;
+}
 
 .privacy .text {
   font-size: 28rpx;
