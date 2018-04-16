@@ -1,0 +1,21 @@
+<!--pages/bin/bin.wxml-->
+<view class='toolbar text-right'>
+  <text class='tops'>回收站文件7天内自动清除</text>
+  <image class="icbc" bindtap='recover' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/914d3eb76595bdee0b3c1638b8d46819_18041615050.png"></image>
+  <text class='iconaae' bindtap='recover'>恢复</text>
+</view>
+<view class='flex-row white-block' style='margin-bottom:2rpx;padding:15rpx;' wx:for="{{list}}" wx:key="kk" >
+  <view >
+    <image class='file' wx:if="{{item.filetype=='P'}}" src='{{uploadpath}}memberphoto/{{item.content}}'></image>
+    <video class='file' wx:if="{{item.filetype=='V'}}" src='{{uploadpath}}memberphoto/{{item.content}}'></video>
+  </view>
+  <view class='flex-1' bindtap='selectItem' id="{{item.id}}">
+    <view class='title'>
+      {{item.location}}
+    </view>
+    <view class='desc'>
+      {{item.uploadtime}}
+    </view>
+    <view class='{{item.selected==true?"selected":"unselected"}}'></view>
+  </view>
+</view>

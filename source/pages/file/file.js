@@ -8,6 +8,10 @@ class Content extends AppBase {
   onLoad(options) {
     //options.id = "103,108,111";
     //options.id = "104,105";
+    //options.id = ;
+    if(options.id!=undefined){
+      options.id=options.id.replace("%2C",",");
+    }
     this.Base.Page = this;
     super.onLoad(options);
 

@@ -84,7 +84,7 @@ http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource
         下载
       </view>
     </view>
-    <view class='flex-1' bindtap='download'>
+    <view class='flex-1' bindtap='viewPhoto'>
       <view>
         <image class='toopsicon' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/f378b3bfaeb2fb365302eb29ae5d8bf0_18041520019.png'></image>
       </view>

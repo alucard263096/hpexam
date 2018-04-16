@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/bin/bin",
     "pages/member/member",
     "pages/photo/photo",
     "pages/file/file",

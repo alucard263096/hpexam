@@ -1,0 +1,68 @@
+/* pages/bin/bin.wxss */
+
+.toolbar{
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+}
+.iconaae{
+  font-size: 28rpx;
+  margin-right: 20rpx;
+}
+.icbc{
+  width:40rpx;
+  height:40rpx;
+  position: absolute;
+  margin-top: 10rpx;
+  margin-left: -45rpx;
+}
+.icbc2{
+  width:36rpx;
+  height:36rpx;
+  position: absolute;
+  margin-top: 10rpx;
+  margin-left: -45rpx;
+}
+.file{
+  width:150rpx;
+  height:150rpx;
+}
+.tops{
+  position: absolute;
+  left: 20rpx;
+  font-size: 28rpx;
+  margin-top: 4rpx;
+}
+.title{
+  margin-left: 20rpx;
+  font-size:28rpx;
+}
+.desc{
+  margin-left: 20rpx;
+  font-size:22rpx;
+  color:#cacaca;
+  margin-top: 20rpx;
+}
+
+
+.selected{
+  background-color: white;
+  background-image: url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/575c73f2f46d0b3634adb44d384d9650_18041519045.png);
+  background-size: 100% 100%;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  position: absolute;
+  margin-top: -40rpx;
+  right:40rpx;
+}
+.unselected{
+    border: white 2rpx solid;
+  background-color: rgba(200, 200, 200, 0.5);
+  background-size: 100% 100%;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  position: absolute;
+  margin-top: -40rpx;
+  right:40rpx;
+}

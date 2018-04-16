@@ -42,7 +42,10 @@
   
   border-bottom:2rpx solid #f2f2f2;
 }
-.right-sigh{
+.righticon{
   position: absolute;
   right:20rpx;
+  margin-top: 10rpx;
+  width:30rpx;
+  height: 30rpx;
 }
