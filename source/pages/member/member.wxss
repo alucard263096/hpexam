@@ -49,3 +49,8 @@
   width:30rpx;
   height: 30rpx;
 }
+.contactbutton{
+  background: white;
+  text-align: left;
+  color:#666;
+}

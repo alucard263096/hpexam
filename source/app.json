@@ -1,12 +1,14 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/bin/bin",
-    "pages/member/member",
+    "pages/notelist/notelist",
+    "pages/note/note",
     "pages/photo/photo",
+    "pages/album/album",
+    "pages/member/member",
+    "pages/bin/bin",
     "pages/file/file",
     "pages/capture/capture",
-    "pages/album/album",
     "pages/content/content",
     "pages/albums/albums",
     "pages/logs/logs",

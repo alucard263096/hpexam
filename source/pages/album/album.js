@@ -18,17 +18,23 @@ class Content extends AppBase {
         this.Base.setMyData({info:ret});
       });
     }else{
-      this.Base.setMyData({ info: {id:"0",name:"",isdefault:"N",status:"A"} });
+      this.Base.setMyData({ info: {id:"0",name:"",isdefault:"N",status:"A",password:""} });
     }
   }
   onShow() {
     var that = this;
     super.onShow();
-  }
+  } 
   changeName(e){
     var val=e.detail.value;
     var info=this.Base.getMyData().info;
     info.name = val;
+    this.Base.setMyData({ info: info });
+  }
+  changePassword(e) {
+    var val = e.detail.value;
+    var info = this.Base.getMyData().info;
+    info.password = val;
     this.Base.setMyData({ info: info });
   }
   changeDefault(e){
@@ -42,7 +48,7 @@ class Content extends AppBase {
     if(info.name==""){
       wx.showModal({
         title: '提示',
-        content: '相册名称不能为空',
+        content: '相册名称不能为空',  
         showCancel:false
       });
       return;
@@ -93,8 +99,9 @@ class Content extends AppBase {
 var page = new Content();
 var body = page.generateBodyJson();
 body.onLoad = page.onLoad; 
-body.onShow = page.onShow;
-body.changeName = page.changeName; 
+body.onShow = page.onShow; 
+body.changeName = page.changeName;
+body.changePassword = page.changePassword; 
 body.changeDefault = page.changeDefault;
 body.save = page.save;
 body.back = page.back;

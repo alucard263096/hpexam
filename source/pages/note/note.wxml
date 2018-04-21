@@ -1,0 +1,13 @@
+<!--pages/note/note.wxml-->
+<view style='padding:20rpx;'>
+
+<textarea style='width:100%;height:80vh;margin-bottom:5vh;' value="{{content}}" maxlength="2000" auto-focus="{{true}}" bindinput="changeContent">
+</textarea>
+<view class='flex-row'>
+<view class='flex-1' style='padding:20rpx;'>
+<button type='primary' bindtap='saveNote'>保存</button>
+</view>
+<view class='flex-1' wx:if="{{id>0}}" style='padding:20rpx;'>
+<button type='default' bindtap='deleteNote'>删除</button></view>
+</view>
+</view>

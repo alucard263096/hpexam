@@ -64,14 +64,14 @@
   margin-left: 100rpx;
 }
 .tooltips{
-  padding-left: 120rpx;
-  padding-right: 120rpx;
+  padding-left: 80rpx;
+  padding-right: 80rpx;
   font-size: 20rpx;
   padding-top: 20rpx;
   padding-bottom: 20rpx;
 }
 .tooltipsfix{
-  width: 510rpx;
+  width: 590rpx;
 }
 .toopsicon{
   width: 40rpx;
@@ -85,6 +85,7 @@
 
   width: 64rpx;
   height: 64rpx;
+  background-color:white;
   background-image:url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/f378b3bfaeb2fb365302eb29ae5d8bf0_18041520019.png);
   background-size: 70% 70%;
   background-repeat: no-repeat;
@@ -112,4 +113,30 @@
   position: absolute;
   margin-top: 10rpx;
   margin-left: -45rpx;
+}
+
+.bgckk{
+
+  background: -webkit-linear-gradient(#f4f4f4, #e5e5e5); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(#f4f4f4, #e5e5e5); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(#f4f4f4, #e5e5e5); /* Firefox 3.6 - 15 */
+  background: linear-gradient(#f4f4f4, #e5e5e5); /* 标准的语法 */
+}
+.bgckk{
+
+  width: 142rpx;
+  margin-right:8rpx;
+  margin-top:8rpx;
+  height: 142rpx;
+
+  background: -webkit-linear-gradient(#f4f4f4, #e5e5e5); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(#f4f4f4, #e5e5e5); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(#f4f4f4, #e5e5e5); /* Firefox 3.6 - 15 */
+  background: linear-gradient(#f4f4f4, #e5e5e5); /* 标准的语法 */
+}
+.bgckk image{
+  width: 62rpx;
+  margin-left:40rpx;
+  margin-top:40rpx;
+  height: 62rpx;
 }

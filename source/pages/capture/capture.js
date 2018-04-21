@@ -10,7 +10,7 @@ class Content extends AppBase {
     //options.id=5;
     this.Base.Page = this;
     super.onLoad(options);
-    var takingtype=2;
+    var takingtype=1;
     if(options.takingtype!=null){
       takingtype=options.takingtype;
     }
@@ -34,11 +34,11 @@ class Content extends AppBase {
         var photos=this.Base.getMyData().photos;
         photos.push(res.tempImagePath);
         this.Base.setMyData({  photos: photos });
-
         this.Base.uploadFile("memberphoto", res.tempImagePath, (imgurl)=>{
           var api = new AlbumApi();
           
           api.upload({
+            album_id: that.Base.options.album_id,
             content: imgurl,
             filetype: "P",
             location: that.Base.getMyData().address
@@ -92,6 +92,7 @@ class Content extends AppBase {
                     that.Base.uploadFile("memberphoto", res.tempVideoPath, (imgurl) => {
                       var api = new AlbumApi();
                       api.upload({
+                        album_id:that.Base.options.album_id,
                         content: imgurl,
                         cover: coverimg,
                         filetype: "V",
@@ -135,6 +136,7 @@ class Content extends AppBase {
             this.Base.uploadFile("memberphoto", res.tempVideoPath, (imgurl) => {
               var api = new AlbumApi();
               api.upload({
+                album_id: that.Base.options.album_id,
                 content: imgurl,
                 cover: coverimg,
                 filetype: "V",

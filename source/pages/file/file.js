@@ -149,7 +149,7 @@ class Content extends AppBase {
         if (res.confirm) {
 
           var albumapi = new AlbumApi();
-          albumapi.deletephoto({ idlist: that.Base.options.id, album_id: info.album_id }, (ret) => {
+          albumapi.deletephoto({ idlist: that.Base.options.id }, (ret) => {
             if (ret.code == 0) {
               wx.showToast({
                 title: '删除成功',

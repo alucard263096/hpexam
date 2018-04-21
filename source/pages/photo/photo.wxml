@@ -1,10 +1,15 @@
 <!--pages/photo/photo.wxml-->
-<view class='toolbar text-right'>
-      <image class="icbc"  bindtap='uploadpic' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/03a9dfb805bee4e0dd98448d0692b23e_18041518050.png"></image>
-  <text class='iconaae' bindtap='uploadpic'>上传图片</text>
-      <image class="icbc2" bindtap='uploadvid' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/084e7b1573029de0561dc41c5d9a0a29_18041518023.png"></image>
-  <text class='iconaae' style='margin-right:20rpx;' bindtap='uploadvid'>上传视频</text>
+<view wx:if="{{UserInfo.openid==albuminfo.member_openid||passwordconfirmed==true}}">
+<view  wx:if="{{UserInfo.openid==albuminfo.member_openid}}" >
+  <view class='title' style='padding-bottom:0rpx;'>上传</view>
+  <view class='flex-row' style='width:750rpx;flex-wrap:wrap'>
+  <navigator url='/pages/capture/capture?album_id={{album_id}}' class='bgckk'>
+  <image mode='aspectFill' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/e99e171642970203f557f402fd03f85a_18040901018.png"  ></image>
+  
+  </navigator>
+  </view>
 </view>
+
 <view wx:for="{{list}}" wx:key="key" wx:if="{{item.vals.length>0}}">
   <view class='title'>{{item.name}}</view>
   <view class='flex-row' style='width:750rpx;flex-wrap:wrap'>
@@ -33,7 +38,7 @@
 
 <view class='text-center privacy white-block tooltips ' wx:if="{{longtype==true}}">
   <view class='flex-row tooltipsfix'>
-    <view class='flex-1' bindtap='moveAlbum'>
+    <view class='flex-1' bindtap='moveAlbum'   wx:if="{{UserInfo.openid==albuminfo.member_openid}}">
       <view>
         <image class='toopsicon' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/3cd93307e5f11403d819d45df5b70145_18041519046.png'></image>
       </view>
@@ -49,15 +54,23 @@
         下载
       </view>
     </view>
-    <view class='flex-1' bindtap='viewPhoto'>
+    <view class='flex-1'>
       <view>
-        <image class='toopsicon' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/f378b3bfaeb2fb365302eb29ae5d8bf0_18041520019.png'></image>
+        <button class='toopsicon btntoopsicon' open-type="share"></button>
+      </view>
+      <view>
+        分享
+      </view>
+    </view>
+    <view class='flex-1' bindtap='viewPhoto'   >
+      <view>
+        <image class='toopsicon' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/0a71438e6ae17a31b1a242e82862cd6b_18042100055.png'></image>
       </view>
       <view>
         查看
       </view>
     </view>
-    <view class='flex-1' bindtap='deleteFiles'>
+    <view class='flex-1' bindtap='deleteFiles'   wx:if="{{UserInfo.openid==albuminfo.member_openid}}">
       <view>
         <image class='toopsicon' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/3b1293dbb8eb7c5c401e82fc0323296a_18041520051.png'></image>
       </view>
@@ -75,3 +88,10 @@
     </view>
   </view>
 </view>
+
+</view>
+
+<modal hidden="{{UserInfo.openid==albuminfo.member_openid||passwordconfirmed==true}}" title="该相册锁定密码" confirm-text="提交" cancel-text="放弃" bindcancel="cancelPassword" bindconfirm="confirmPassword">  
+    <input type='password' placeholder="输入密码" value="{{password}}" bindinput='inputPassword' maxlength='20' /> 
+    <label style='color:red;font-size:26rpx;' wx:if="{{passwordincorrect==true}}">密码错误，请重新输入</label>
+</modal>

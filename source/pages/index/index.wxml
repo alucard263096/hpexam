@@ -1,112 +1,49 @@
 <!--index.wxml-->
-<view class="flex-row" style='background:#50BAFF'>
-  <navigator url='/pages/member/member?keycode=instruction&title=个人中心'>
-    <image class="userinfo-avatar" src="{{UserInfo.avatarUrl}}" background-size="cover"></image>
-  </navigator>
+<navigator url='/pages/member/member' class="flex-row" style='background:#50BAFF'>
+  <image class="userinfo-avatar" src="{{UserInfo.avatarUrl}}" background-size="cover"></image>
   <text class="userinfo-nickname">{{UserInfo.nickName}}</text>
-</view>
-
-<navigator url='/pages/albums/albums' class='flex-row white-block line-change'>
+</navigator>
+<navigator url='/pages/notelist/notelist' class='flex-row white-block line-change'>
   <view class='flex-1' style='font-size:32rpx;'>日记</view>
   <view class='flex-1 text-right'>
-    <image mode='widthFix' style='margin-top:3rpx;' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/e0e3d610c3fe61e1baffdf5d001f6f18_18041311050.png"></image>
+    <image mode='widthFix' style='margin-top:6rpx;' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/3cd93307e5f11403d819d45df5b70145_18040500042.png"></image>
   </view>
 </navigator>
 
-<view class='albums flex-row' wx:if="{{showtype=='P'}}">
-  <view class='album ' wx:for="{{files}}" wx:key="k" wx:if="{{item.filetype=='P'}}">
-    <image class='cover' mode='aspectFill' bindtap='gotoPhoto' bindlongtap='photoLong' id="{{item.id}}" wx:if="{{item.filetype=='P'}}" src='{{uploadpath}}memberphoto/{{item.content}}'></image>
-    <view class='selected' wx:if="{{longtype==true&&item.selected==true}}"></view>
-    <view class='unselected' wx:if="{{longtype==true&&item.selected!=true}}"></view>
+<view class='albums flex-row'>
+  <view class='album  '>
+    <view class='cover'>
+      <image class='addcover' bindtap='addNew' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/e99e171642970203f557f402fd03f85a_18040901018.png'></image>
+    </view>
+    <view class='descriptionplay'>添加相册</view>
+  </view>
+  <view class='album ' wx:for="{{albums}}" wx:key="k">
+    <image class='cover' mode='aspectFill' bindtap='openPhotos' id="{{item.id}}" src='{{uploadpath}}memberphoto/{{item.lastfileinfo.content}}'  wx:if="{{item.lastfileinfo.id>0}}"></image>
+    <view class='cover' wx:else>
+    <image class='nullcover' mode='aspectFill' bindtap='openPhotos' id="{{item.id}}"  src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/26c5a6b28bde5ac1515e4275b42a6223_18040901018.png'></image>
+    </view>
+    <view class='descriptionplay {{item.isdefault=="Y"?"font-primary":""}} '>{{item.name}}</view>
+    <view class='edit' bindtap='openAlbum' id="{{item.id}}"></view>
   </view>
 </view>
 
-<view class='albums flex-row' wx:if="{{showtype=='V'}}">
-  <view class='album ' wx:for="{{files}}" wx:key="k" wx:if="{{item.filetype=='V'}}">
-    <image class='cover' mode='aspectFill' bindtap='gotoPhoto' id="{{item.id}}" bindlongtap='photoLong' src='{{uploadpath}}memberphoto/{{item.cover}}'></image>
-    <view class='selected' wx:if="{{longtype==true&&item.selected==true}}"></view>
-    <view class='unselected' wx:if="{{longtype==true&&item.selected!=true}}"></view>
-  </view>
+<view style='height:100rpx;'>
 </view>
 
-<view style='height:120rpx;'>
-</view>
-
-<view class='text-center privacy flex-row white-block' wx:if="{{longtype!=true}}">
-  <view class='flex-1 text-center' bindtap='clickPhoto' wx:if="{{showtype=='P'}}">
+<view class='text-center privacy flex-row white-block'>
+  <view class='flex-1 text-center' bindtap='clickPhoto'>
     <view>
-      <image class="icon" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/ad1a1b7183951dc89f508a6b6c422144_18041517017.png"></image>
+      <image class="icon" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/57d54b2fbe83bb0c38861a44d241a2df_18040901056.png"></image>
     </view>
     <view class='text'>照片</view>
   </view>
-  <view class='flex-1 text-center' bindtap='clickPhoto' wx:if="{{showtype!='P'}}">
+  <view class='flex-1 text-center' bindtap='clickVideo'>
     <view>
-      <image class="icon" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/03a9dfb805bee4e0dd98448d0692b23e_18041518050.png"></image>
-    </view>
-    <view class='text' style='color:#333333;'>照片</view>
-  </view>
-  <view class='flex-1 text-center' bindtap='clickTaking'>
-    <view>
-      <image class="iconaaa" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/57d54b2fbe83bb0c38861a44d241a2df_18040901056.png"></image>
-    </view>
-  </view>
-  <view class='flex-1 text-center' bindtap='clickVideo' wx:if="{{showtype=='V'}}">
-    <view>
-      <image class="icon" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/0c485e759453589b882f9509dae8753d_18041517037.png"></image>
+      <image class="icon" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/f2f6e71560e0ef1b2e79426c39115753_18040901039.png"></image>
     </view>
     <view class='text'>视频</view>
-  </view>
-  <view class='flex-1 text-center' bindtap='clickVideo' wx:if="{{showtype!='V'}}">
-    <view>
-      <image class="icon" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/084e7b1573029de0561dc41c5d9a0a29_18041518023.png"></image>
-    </view>
-    <view class='text' style='color:#333333;'>视频</view>
   </view>
 </view>
 <!--
 http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/57d54b2fbe83bb0c38861a44d241a2df_18040901056.png
 -->
-<view class='text-center privacy white-block tooltips ' wx:if="{{longtype==true}}">
-  <view class='flex-row tooltipsfix' >
-    <view class='flex-1' bindtap='moveAlbum'>
-      <view>
-        <image class='toopsicon' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/3cd93307e5f11403d819d45df5b70145_18041519046.png'></image>
-      </view>
-      <view>
-        加到相册
-      </view>
-    </view>
-    <view class='flex-1' bindtap='download'>
-      <view>
-        <image class='toopsicon' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/c26be60cfd1ba40772b5ac48b95ab19b_18041521022.png'></image>
-      </view>
-      <view>
-        下载
-      </view>
-    </view>
-    <view class='flex-1' bindtap='viewPhoto'>
-      <view>
-        <image class='toopsicon' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/f378b3bfaeb2fb365302eb29ae5d8bf0_18041520019.png'></image>
-      </view>
-      <view>
-        查看
-      </view>
-    </view>
-    <view class='flex-1' bindtap='deleteFiles'>
-      <view>
-        <image class='toopsicon' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/3b1293dbb8eb7c5c401e82fc0323296a_18041520051.png'></image>
-      </view>
-      <view>
-        删除
-      </view>
-    </view>
-    <view class='flex-1' bindtap='cancelLongtype'>
-      <view>
-        <image class='toopsicon' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/fda89ed742b7652bf9ff7b71aac77b79_18041520039.png'></image>
-      </view>
-      <view>
-        取消
-      </view>
-    </view>
-  </view>
-</view>

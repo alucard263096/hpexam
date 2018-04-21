@@ -7,21 +7,23 @@ class Content extends AppBase {
     super();
   }
   onLoad(options) {
-    //options.album_id = 10;
+    //options.album_id = 3;
     this.Base.Page = this;
     super.onLoad(options);
 
     var that = this;
-    this.Base.setMyData({ longtype: false });
+    this.Base.setMyData({ longtype: false, passwordconfirmed:true,password:"" });
 
-    wx.hideShareMenu({
-      
-    })
+    this.Base.setMyData({ album_id: options.album_id });
   }
   onShow() {
     var that = this;
     super.onShow();
     var albumapi = new AlbumApi();
+    albumapi.getinfo({ id: this.Base.options.album_id }, (albuminfo) => {
+      var passwordconfirmed = albuminfo.password=="";
+      this.Base.setMyData({ albuminfo: albuminfo, passwordconfirmed: passwordconfirmed });
+    });
     albumapi.photos({ album_id: this.Base.options.album_id }, (list) => {
       this.Base.setMyData({ list: list });
     });
@@ -349,6 +351,58 @@ class Content extends AppBase {
     }
   }
 
+  onShareAppMessage() {
+    var list = this.Base.getMyData().list;
+    var firstfile = null;
+    var ids = [];
+    for (var akb = 0; akb < list.length; akb++) {
+
+      for (var i = 0; i < list[akb].vals.length; i++) {
+        if (list[akb].vals[i].selected == true) {
+          ids.push(list[akb].vals[i].id);
+          if (firstfile == null) {
+            firstfile = list[akb].vals[i];
+          }
+        }
+      }
+    }
+    var longtype = this.Base.getMyData().longtype;
+    var uploadpath = this.Base.getMyData().uploadpath;
+    this.Base.setMyData({ longtype: false });
+    if (longtype == true && ids.length > 0) {
+      return {
+        title: 'ME相册图片分享',
+        path: '/pages/file/file?id=' + ids.join(","),
+        imageUrl: uploadpath + "memberphoto/" + (firstfile.filetype == "P" ? firstfile.content : firstfile.cover),
+        success: function (res) {
+          // 转发成功
+        },
+        fail: function (res) {
+          // 转发失败
+        }
+      }
+
+    }
+
+  }
+  cancelPassword(){
+    wx.navigateBack({
+      
+    })
+  }
+  confirmPassword() {
+    var password = this.Base.getMyData().password;
+    var albuminfo = this.Base.getMyData().albuminfo;
+    if (password == albuminfo.password){
+      this.Base.setMyData({ passwordconfirmed: true });
+    }else{
+      this.Base.setMyData({ passwordincorrect : true });
+    }
+  }
+  inputPassword(e){
+    var val=e.detail.value;
+    this.Base.setMyData({password:val});
+  }
 }
 var firstlongtype = false;
 var page = new Content();
@@ -363,7 +417,10 @@ body.onPullDownRefresh = page.onPullDownRefresh;
 body.photoLong = page.photoLong;
 body.cancelLongtype = page.cancelLongtype;
 body.deleteFiles = page.deleteFiles;
-body.moveAlbum = page.moveAlbum;
+body.moveAlbum = page.moveAlbum; 
 body.viewPhoto = page.viewPhoto;
 body.download = page.download;
+body.cancelPassword = page.cancelPassword;
+body.confirmPassword = page.confirmPassword;
+body.inputPassword = page.inputPassword;
 Page(body)

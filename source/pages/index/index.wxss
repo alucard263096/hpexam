@@ -61,7 +61,7 @@
 .privacy .text {
   font-size: 28rpx;
   margin-top: 20rpx;
-  margin-bottom: 20rpx;
+  margin-bottom: 30rpx;
   color: #50baff;
 }
 

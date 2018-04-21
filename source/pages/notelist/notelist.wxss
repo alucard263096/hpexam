@@ -1,0 +1,28 @@
+/* pages/notelist/notelist.wxss */
+.bgckk{
+  width:326rpx;
+  margin-right: 30rpx;
+  margin-bottom: 30rpx;
+  background: white;
+  border:2rpx solid #CCC;
+}
+.bgckk image{
+  margin-top: 110rpx;
+  margin-left: 110rpx;
+  width:110rpx;
+  height:110rpx;
+}
+.gbc{
+  width:286rpx;
+  margin-bottom: 30rpx;
+  margin-right: 30rpx;
+  padding:20rpx;
+  background: white;
+  border:2rpx solid #CCC;
+}
+.wttx{
+   width:100%;
+   white-space:normal;
+   word-wrap : break-word ;
+   word-break:break-all;
+}

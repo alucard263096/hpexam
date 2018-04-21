@@ -9,6 +9,13 @@
 <input type='text' placeholder='1-10个汉字' maxlength='10' value="{{info.name}}" bindinput="changeName" ></input>
 </view>
 
+<view class='subtitle'>
+相册密码
+</view>
+<view class='subinput'>
+<input type='password' placeholder='密码为空则不需要输入密码' maxlength='20' value="{{info.password}}" bindinput="changePassword" ></input>
+</view>
+
 <view class='subinput flex-row' style='margin-top:40rpx;'>
 <view class='flex-1'>默认相册</view>
 <view class='flex-1 text-right'>

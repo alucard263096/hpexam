@@ -16,12 +16,9 @@ class Content extends AppBase {
   onShow() {
     var that = this;
     super.onShow();
-    var api = new AlbumApi();
-    api.tempfile({album_id:0},(ret)=>{
-      this.Base.setMyData({ files: ret});
-     });
 
-    api.list({}, (albums) => {
+    var albumapi = new AlbumApi();
+    albumapi.list({}, (albums) => {
       this.Base.setMyData({ albums: albums });
     });
   }
@@ -81,10 +78,10 @@ class Content extends AppBase {
     //     }
     //   });
     // });
-    //wx.navigateTo({
-    //  url: '/pages/capture/capture?takingtype=1',
-    //})
-    this.Base.setMyData({  showtype: "P" });
+    wx.navigateTo({
+      url: '/pages/capture/capture?takingtype=1',
+    })
+    //this.Base.setMyData({  showtype: "P" });
   }
   clickVideo() {
     // var that = this;
@@ -103,11 +100,11 @@ class Content extends AppBase {
     //   });
     // });
 
-    //wx.navigateTo({
-    //  url: '/pages/capture/capture?takingtype=2',
-    //})
+    wx.navigateTo({
+      url: '/pages/capture/capture?takingtype=2',
+    })
 
-    this.Base.setMyData({ showtype: "V" });
+    //this.Base.setMyData({ showtype: "V" });
   }
   clickTaking(){
     var showtype = this.Base.getMyData().showtype=="P"?"1":"2";
@@ -354,6 +351,25 @@ class Content extends AppBase {
     }
     
   }
+  addNew() {
+    wx.navigateTo({
+      url: '../album/album',
+    })
+  }
+  openAlbum(e) {
+    console.log(e);
+    var id = e.currentTarget.id;
+    wx.navigateTo({
+      url: '../album/album?id=' + id,
+    })
+  }
+  openPhotos(e) {
+
+    var id = e.currentTarget.id;
+    wx.navigateTo({
+      url: '../photo/photo?album_id=' + id,
+    })
+  }
 }
 var page = new Content();
 var body = page.generateBodyJson();
@@ -371,4 +387,7 @@ body.deleteFiles = page.deleteFiles;
 body.moveAlbum = page.moveAlbum;
 body.viewPhoto = page.viewPhoto;
 body.download = page.download;
+body.addNew = page.addNew;
+body.openAlbum = page.openAlbum;
+body.openPhotos = page.openPhotos;
 Page(body)

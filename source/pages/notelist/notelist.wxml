@@ -1,0 +1,18 @@
+<!--pages/notelist/notelist.wxml-->
+<view style='padding-left:30rpx;padding-top:30rpx;' class='flex-row'>
+  <view  style='width:360rpx;'>
+    <navigator url='/pages/note/note' class='bgckk' style='height:330rpx;'>
+      <image mode='aspectFill' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/e99e171642970203f557f402fd03f85a_18040901018.png"></image>
+    </navigator>
+    <navigator url='/pages/note/note?id={{item.id}}' wx:for-index="seq" wx:for="{{list}}" wx:key="lk" class='gbc' wx:if="{{seq%2==1}}" >
+      <view class='wttx'>{{item.content}}</view>
+      <view class='text-right' style='font-size:26rpx;margin-top:20rpx;'>{{item.updatetimespan}}</view>
+    </navigator>
+  </view>
+  <view  style='width:360rpx;'>
+    <navigator url='/pages/note/note?id={{item.id}}' wx:for-index="seq" wx:for="{{list}}" wx:key="lk" class='gbc' wx:if="{{seq%2==0}}" >
+      <view class='wttx'>{{item.content}}</view>
+      <view class='text-right' style='font-size:26rpx;margin-top:20rpx;'>{{item.updatetimespan}}</view>
+    </navigator>
+  </view>
+</view>
