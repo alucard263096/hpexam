@@ -1,4 +1,8 @@
 <!--pages/photo/photo.wxml-->
+<view class='text-right white-block' style='padding:20rpx;font-size:28rpx;'>
+<text bindtap='photoLong' wx:if="{{longtype==false}}">编辑</text>
+<text bindtap='cancelLongtype' wx:if="{{longtype==true}}">取消</text>
+</view>
 <view wx:if="{{UserInfo.openid==albuminfo.member_openid||passwordconfirmed==true}}">
 <view  wx:if="{{UserInfo.openid==albuminfo.member_openid}}" >
   <view class='title' style='padding-bottom:0rpx;'>上传</view>
@@ -20,6 +24,7 @@
       <image mode='aspectFill' bindtap='gotoPhoto' bindlongtap='photoLong' id="{{item.id}}" class='photo' src="{{uploadpath}}memberphoto/{{item.cover}}" wx:if="{{item.filetype=='V'&&item.cover!=''}}"></image>
       <cover-view class='selected' wx:if="{{longtype==true&&item.selected==true}}"></cover-view>
       <cover-view class='unselected' wx:if="{{longtype==true&&item.selected!=true}}"></cover-view>
+      <image wx:if="{{item.filetype=='V'}}" class='videolittle' src="{{uploadpath}}resource/c33454d4804c7fd7f586c38761528598_18051610001.png"></image>
     </view>
   </view>
 </view>

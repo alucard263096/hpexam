@@ -1,11 +1,13 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/membermobile/membermobile",
+    "pages/member/member",
+    "pages/memberinfo/memberinfo",
+    "pages/photo/photo",
     "pages/notelist/notelist",
     "pages/note/note",
-    "pages/photo/photo",
     "pages/album/album",
-    "pages/member/member",
     "pages/bin/bin",
     "pages/file/file",
     "pages/capture/capture",

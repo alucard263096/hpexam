@@ -1,0 +1,20 @@
+<!--pages/membermobile/membermobile.wxml-->
+<!--pages/memberinfo/memberinfo.wxml-->
+<view class='subtitle'>
+  手机号码
+</view>
+<view class='subinput flex-row'>
+  <view class='flex-1' wx:if="{{mobile!=''}}">
+    <input type='text' placeholder='手机号码' maxlength='10' value="{{mobile}}" bindinput="changeName" ></input>
+  </view>
+  <view  wx:if="{{mobile==''}}">
+    <button type='default' size="mini" open-type='getPhoneNumber' bindgetphonenumber="getPhoneNumber">获取手机号码</button>
+  </view>
+</view>
+
+
+
+
+<view style='margin-top:400rpx;padding:40rpx;'>
+  <button type='primary' bindtap='save'  disabled='{{mobile==""}}'>保存</button>
+</view>

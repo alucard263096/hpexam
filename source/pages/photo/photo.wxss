@@ -140,3 +140,10 @@
   margin-top:40rpx;
   height: 62rpx;
 }
+.videolittle{
+  position: absolute;
+  width: 30rpx;
+  height: 30rpx;
+  margin-top: -50rpx;
+  margin-left: 10rpx;
+}

@@ -53,4 +53,9 @@
   background: white;
   text-align: left;
   color:#666;
+  border-radius: 0px;
+}
+button{
+  border-radius: 0px;
+  background-color: red;
 }

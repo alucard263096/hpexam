@@ -1,0 +1,20 @@
+/* pages/memberinfo/memberinfo.wxss */
+/* pages/album/album.wxss */
+.subtitle{
+  padding:20rpx;
+  font-size: 24rpx;
+}
+.subinput{
+  background: white;
+  border-top: 2rpx solid #ccc;
+  border-bottom: 2rpx solid #ccc;
+  padding:20rpx;
+  font-size: 28rpx;
+}
+.title{
+  text-align: center;
+  margin-top: 50rpx;
+  margin-bottom: 40rpx;
+  color: #666;
+  font-weight: bold;
+}

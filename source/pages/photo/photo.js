@@ -10,6 +10,9 @@ class Content extends AppBase {
     //options.album_id = 3;
     this.Base.Page = this;
     super.onLoad(options);
+    if (options.album_id==undefined){
+      options.album_id=0;
+    }
 
     var that = this;
     this.Base.setMyData({ longtype: false, passwordconfirmed:true,password:"" });
@@ -20,11 +23,13 @@ class Content extends AppBase {
     var that = this;
     super.onShow();
     var albumapi = new AlbumApi();
-    albumapi.getinfo({ id: this.Base.options.album_id }, (albuminfo) => {
-      var passwordconfirmed = albuminfo.password=="";
-      this.Base.setMyData({ albuminfo: albuminfo, passwordconfirmed: passwordconfirmed });
-    });
-    albumapi.photos({ album_id: this.Base.options.album_id }, (list) => {
+    if (this.Base.options.album_id!=0){
+      albumapi.getinfo({ id: this.Base.options.album_id }, (albuminfo) => {
+        var passwordconfirmed = albuminfo.password == "";
+        this.Base.setMyData({ albuminfo: albuminfo, passwordconfirmed: passwordconfirmed });
+      });
+    }
+    albumapi.photos({ album_id: this.Base.options.album_id, "type": this.Base.options.type }, (list) => {
       this.Base.setMyData({ list: list });
     });
     albumapi.list({}, (albums) => {

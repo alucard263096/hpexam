@@ -78,10 +78,16 @@ class Content extends AppBase {
     //     }
     //   });
     // });
+
+    wx.navigateTo({
+      url: '../photo/photo?type=P',
+    });
+    return;
+
     wx.navigateTo({
       url: '/pages/capture/capture?takingtype=1',
     })
-    //this.Base.setMyData({  showtype: "P" });
+    this.Base.setMyData({  showtype: "P" });
   }
   clickVideo() {
     // var that = this;
@@ -99,6 +105,10 @@ class Content extends AppBase {
     //     }
     //   });
     // });
+    wx.navigateTo({
+      url: '../photo/photo?type=V',
+    });
+    return;
 
     wx.navigateTo({
       url: '/pages/capture/capture?takingtype=2',
@@ -370,6 +380,11 @@ class Content extends AppBase {
       url: '../photo/photo?album_id=' + id,
     })
   }
+  openUpload(){
+    wx.navigateTo({
+      url: '/pages/capture/capture?takingtype=1',
+    });
+  }
 }
 var page = new Content();
 var body = page.generateBodyJson();
@@ -387,7 +402,8 @@ body.deleteFiles = page.deleteFiles;
 body.moveAlbum = page.moveAlbum;
 body.viewPhoto = page.viewPhoto;
 body.download = page.download;
-body.addNew = page.addNew;
+body.addNew = page.addNew; 
 body.openAlbum = page.openAlbum;
 body.openPhotos = page.openPhotos;
+body.openUpload = page.openUpload;
 Page(body)

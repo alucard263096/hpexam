@@ -10,11 +10,15 @@
 <navigator url='/pages/albums/albums'  class='item item-split'>我的相册
 <image class='righticon' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/baa9d42eab310384df5d59a5507d58e3_18041611023.png'></image>
 </navigator>
-<navigator url='/pages/bin/bin' class='item'>回收站
-<image class='righticon' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/baa9d42eab310384df5d59a5507d58e3_18041611023.png'></image></navigator>
+<navigator url='/pages/memberinfo/memberinfo'  class='item item-split'>个人资料
+<image class='righticon' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/baa9d42eab310384df5d59a5507d58e3_18041611023.png'></image>
+</navigator>
+<navigator url='/pages/membermobile/membermobile'  class='item item-split'>绑定手机
+<image class='righticon' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/baa9d42eab310384df5d59a5507d58e3_18041611023.png'></image>
+</navigator>
 </view>
+
 
 <view class='white-block block'>
 <button open-type="contact" class='contactbutton'>进入客服会话</button>
-<navigator url='/pages/content/content?keycode=instruction&title=个人中心'  class='item'>关于我们</navigator>
 </view>

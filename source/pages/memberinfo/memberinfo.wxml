@@ -1,0 +1,24 @@
+<!--pages/memberinfo/memberinfo.wxml-->
+<view class='subtitle'>
+姓名
+</view>
+<view class='subinput'>
+<input type='text' placeholder='1-10个汉字' maxlength='10' value="{{name}}" bindinput="changeName" ></input>
+</view>
+
+
+<view class='subtitle'>
+出生年月日
+</view>
+<view class='subinput'>
+<picker mode="date" value="{{birth}}"  bindchange="birthChange" end="{{enddate}}">
+    <view class="picker">
+      {{birth}}
+    </view>
+  </picker>
+</view>
+
+
+<view style='margin-top:400rpx;padding:40rpx;'>
+<button type='primary' bindtap='save'  disabled='{{name==""}}'>保存</button>
+</view>

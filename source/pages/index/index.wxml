@@ -3,12 +3,12 @@
   <image class="userinfo-avatar" src="{{UserInfo.avatarUrl}}" background-size="cover"></image>
   <text class="userinfo-nickname">{{UserInfo.nickName}}</text>
 </navigator>
-<navigator url='/pages/notelist/notelist' class='flex-row white-block line-change'>
-  <view class='flex-1' style='font-size:32rpx;'>日记</view>
+<view  class='flex-row white-block line-change'>
+  <navigator url='/pages/notelist/notelist' class='flex-1' style='font-size:32rpx;'>日记</navigator>
   <view class='flex-1 text-right'>
-    <image mode='widthFix' style='margin-top:6rpx;' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/3cd93307e5f11403d819d45df5b70145_18040500042.png"></image>
+    <image mode='widthFix' style='margin-top:6rpx;' bindtap='openUpload' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/3cd93307e5f11403d819d45df5b70145_18040500042.png"></image>
   </view>
-</navigator>
+</view>
 
 <view class='albums flex-row'>
   <view class='album  '>

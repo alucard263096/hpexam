@@ -27,3 +27,6 @@ view{
 .font-primary{
   color:#50BAFF;
 }
+.navigator-hover{
+  background: transparent;
+}
