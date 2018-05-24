@@ -4,11 +4,10 @@
 <view class='classborder'>
   <view class='selectbar' wx:if="{{takingtype==1}}">
     <text>照片</text>
-    <text class='secondtab' bindtap='changeTakingType' id="2">视频</text>
   </view>
+  
   <view class='selectbar' wx:if="{{takingtype==2}}">
     <text>视频</text>
-    <text class='secondtab' bindtap='changeTakingType' id="1">照片</text>
     <text class='recordsecond' >{{second}}s</text>
   </view>
   <view class='flex-row' style='margin-top:20rpx;'>

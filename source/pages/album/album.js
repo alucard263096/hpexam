@@ -7,6 +7,7 @@ class Content extends AppBase {
   }
   onLoad(options) {
     //options.id=5;
+    //options.album=5;
     this.Base.Page = this;
     super.onLoad(options);
 
@@ -18,7 +19,7 @@ class Content extends AppBase {
         this.Base.setMyData({info:ret});
       });
     }else{
-      this.Base.setMyData({ info: {id:"0",name:"",isdefault:"N",status:"A",password:""} });
+      this.Base.setMyData({ info: { id: "0", name: "", isdefault: "N", status: "A", password: "", albumtype: options.albumtype} });
     }
   }
   onShow() {

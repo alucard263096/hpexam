@@ -79,15 +79,15 @@ class Content extends AppBase {
     //   });
     // });
 
+    this.Base.setMyData({ showtype: "P" });
+    return;
     wx.navigateTo({
       url: '../photo/photo?type=P',
     });
-    return;
 
     wx.navigateTo({
       url: '/pages/capture/capture?takingtype=1',
     })
-    this.Base.setMyData({  showtype: "P" });
   }
   clickVideo() {
     // var that = this;
@@ -105,16 +105,16 @@ class Content extends AppBase {
     //     }
     //   });
     // });
-    wx.navigateTo({
-      url: '../photo/photo?type=V',
-    });
+    this.Base.setMyData({ showtype: "V" });
+    //wx.navigateTo({
+    //  url: '../photo/photo?type=V',
+    //});
     return;
 
-    wx.navigateTo({
-      url: '/pages/capture/capture?takingtype=2',
-    })
+    //wx.navigateTo({
+    //  url: '/pages/capture/capture?takingtype=2',
+    //})
 
-    //this.Base.setMyData({ showtype: "V" });
   }
   clickTaking(){
     var showtype = this.Base.getMyData().showtype=="P"?"1":"2";
@@ -363,7 +363,7 @@ class Content extends AppBase {
   }
   addNew() {
     wx.navigateTo({
-      url: '../album/album',
+      url: '../album/album?albumtype='+this.Base.getMyData().showtype,
     })
   }
   openAlbum(e) {

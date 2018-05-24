@@ -3,29 +3,49 @@
   <image class="userinfo-avatar" src="{{UserInfo.avatarUrl}}" background-size="cover"></image>
   <text class="userinfo-nickname">{{UserInfo.nickName}}</text>
 </navigator>
-<view  class='flex-row white-block line-change'>
+<view class='flex-row white-block line-change'>
   <navigator url='/pages/notelist/notelist' class='flex-1' style='font-size:32rpx;'>日记</navigator>
-  <view class='flex-1 text-right'>
-    <image mode='widthFix' style='margin-top:6rpx;' bindtap='openUpload' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/3cd93307e5f11403d819d45df5b70145_18040500042.png"></image>
-  </view>
+  <navigator  url='/pages/notelist/notelist' class='flex-1 text-right'>
+    <image mode='widthFix' style='margin-top:6rpx;' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/3cd93307e5f11403d819d45df5b70145_18040500042.png"></image>
+  </navigator>
 </view>
 
-<view class='albums flex-row'>
+<view class='albums flex-row' hidden='{{showtype=="V"}}'>
   <view class='album  '>
     <view class='cover'>
       <image class='addcover' bindtap='addNew' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/e99e171642970203f557f402fd03f85a_18040901018.png'></image>
     </view>
     <view class='descriptionplay'>添加相册</view>
   </view>
-  <view class='album ' wx:for="{{albums}}" wx:key="k">
-    <image class='cover' mode='aspectFill' bindtap='openPhotos' id="{{item.id}}" src='{{uploadpath}}memberphoto/{{item.lastfileinfo.content}}'  wx:if="{{item.lastfileinfo.id>0}}"></image>
-    <view class='cover' wx:else>
-    <image class='nullcover' mode='aspectFill' bindtap='openPhotos' id="{{item.id}}"  src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/26c5a6b28bde5ac1515e4275b42a6223_18040901018.png'></image>
+  <view class='album ' wx:for="{{albums}}" wx:key="k" wx:if="{{item.albumtype=='P'}}">
+    <image class='cover' mode='aspectFill' bindtap='openPhotos' id="{{item.id}}" src='{{uploadpath}}memberphoto/{{item.lastfileinfo.content}}' wx:if="{{item.lastfileinfo.id>0}}"></image>
+    <view class='cover' wx:else  bindtap='openPhotos' id="{{item.id}}" >
+      <image class='nullcover' mode='aspectFill'src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/26c5a6b28bde5ac1515e4275b42a6223_18040901018.png'></image>
     </view>
     <view class='descriptionplay {{item.isdefault=="Y"?"font-primary":""}} '>{{item.name}}</view>
     <view class='edit' bindtap='openAlbum' id="{{item.id}}"></view>
   </view>
 </view>
+
+
+<view class='albums flex-row' hidden='{{showtype=="P"}}'>
+  <view class='album  '>
+    <view class='cover'>
+      <image class='addcover' bindtap='addNew' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/e99e171642970203f557f402fd03f85a_18040901018.png'></image>
+    </view>
+    <view class='descriptionplay'>添加相册</view>
+  </view>
+  <view class='album ' wx:for="{{albums}}" wx:key="k" wx:if="{{item.albumtype=='V'}}">
+    <image class='cover' mode='aspectFill' bindtap='openPhotos' id="{{item.id}}" src='{{uploadpath}}memberphoto/{{item.lastfileinfo.content}}' wx:if="{{item.lastfileinfo.id>0}}"></image>
+    <view class='cover' wx:else  bindtap='openPhotos' id="{{item.id}}" >
+      <image class='nullcover' mode='aspectFill'src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/26c5a6b28bde5ac1515e4275b42a6223_18040901018.png'></image>
+    </view>
+    <view class='descriptionplay {{item.isdefault=="Y"?"font-primary":""}} '>{{item.name}}</view>
+    <view class='edit' bindtap='openAlbum' id="{{item.id}}"></view>
+  </view>
+</view>
+
+
 
 <view style='height:100rpx;'>
 </view>
@@ -33,17 +53,29 @@
 <view class='text-center privacy flex-row white-block'>
   <view class='flex-1 text-center' bindtap='clickPhoto'>
     <view>
-      <image class="icon" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/57d54b2fbe83bb0c38861a44d241a2df_18040901056.png"></image>
+      <image class="icon" wx:if="{{showtype=='P'}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/515765a93cf168177ef90f96b36457a6_18052213058.png"></image>
+      <image class="icon" wx:if="{{showtype!='P'}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/659bf51391699a8ef75b8d6e042f0520_18052213029.png"></image>
     </view>
-    <view class='text'>照片</view>
+    <view class='text' wx:if="{{showtype=='P'}}">照片</view>
+    <view class='text' style='color:#cdcdcd' wx:if="{{showtype!='P'}}">照片</view>
+  </view>
+  <view>
+  
   </view>
   <view class='flex-1 text-center' bindtap='clickVideo'>
     <view>
-      <image class="icon" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/f2f6e71560e0ef1b2e79426c39115753_18040901039.png"></image>
+      <image class="icon" wx:if="{{showtype=='V'}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/f2f6e71560e0ef1b2e79426c39115753_18052213057.png"></image>
+      <image class="icon" wx:if="{{showtype!='V'}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/27de29875784964f23f9ec312ed32b26_18052213006.png"></image>
     </view>
-    <view class='text'>视频</view>
+    <view class='text' wx:if="{{showtype=='V'}}">视频</view>
+    <view class='text' style='color:#cdcdcd' wx:if="{{showtype!='V'}}">视频</view>
   </view>
 </view>
 <!--
 http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/57d54b2fbe83bb0c38861a44d241a2df_18040901056.png
 -->
+
+<view class='white-block' style='position:fixed;left:310rpx;bottom:0rpx;border:0rpx solid #ccc;line-height:0rpx;padding:16rpx;border-radius:50%;' bindtap='clickTaking' >
+  <image style='width:80rpx;height:80rpx;' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/57d54b2fbe83bb0c38861a44d241a2df_18040901056.png' wx:if="{{showtype=='P'}}"></image>
+  <image style='width:80rpx;height:80rpx;' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/4b1230c9467b1881e93edc40304aa31d_18052214001.png' wx:if="{{showtype=='V'}}"></image>
+</view>

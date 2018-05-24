@@ -30,3 +30,12 @@ view{
 .navigator-hover{
   background: transparent;
 }
+
+button[type=primary] {
+color:#FFFFFF;
+background-color:#50BAFF;
+}
+button[type=primary].button-hover {
+color:#FFFFFF;
+background-color:#78CAFF;
+}

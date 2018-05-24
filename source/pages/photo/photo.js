@@ -27,13 +27,16 @@ class Content extends AppBase {
       albumapi.getinfo({ id: this.Base.options.album_id }, (albuminfo) => {
         var passwordconfirmed = albuminfo.password == "";
         this.Base.setMyData({ albuminfo: albuminfo, passwordconfirmed: passwordconfirmed });
+
+
+        albumapi.list({ albumtype: albuminfo.albumtype}, (albums) => {
+          that.Base.setMyData({ albums: albums });
+        });
+
       });
     }
     albumapi.photos({ album_id: this.Base.options.album_id, "type": this.Base.options.type }, (list) => {
       this.Base.setMyData({ list: list });
-    });
-    albumapi.list({}, (albums) => {
-      this.Base.setMyData({ albums: albums });
     });
   }
   uploadpic() {

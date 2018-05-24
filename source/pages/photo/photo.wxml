@@ -1,37 +1,37 @@
 <!--pages/photo/photo.wxml-->
-<view class='text-right white-block' style='padding:20rpx;font-size:28rpx;'>
-<text bindtap='photoLong' wx:if="{{longtype==false}}">编辑</text>
-<text bindtap='cancelLongtype' wx:if="{{longtype==true}}">取消</text>
-</view>
-<view wx:if="{{UserInfo.openid==albuminfo.member_openid||passwordconfirmed==true}}">
-<view  wx:if="{{UserInfo.openid==albuminfo.member_openid}}" >
-  <view class='title' style='padding-bottom:0rpx;'>上传</view>
-  <view class='flex-row' style='width:750rpx;flex-wrap:wrap'>
-  <navigator url='/pages/capture/capture?album_id={{album_id}}' class='bgckk'>
-  <image mode='aspectFill' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/e99e171642970203f557f402fd03f85a_18040901018.png"  ></image>
-  
-  </navigator>
+<view wx:if="{{passwordconfirmed==true}}">
+  <view class='text-right white-block' style='padding:20rpx;font-size:28rpx;'>
+    <text bindtap='photoLong' wx:if="{{longtype==false}}">编辑</text>
+    <text bindtap='cancelLongtype' wx:if="{{longtype==true}}">取消</text>
   </view>
-</view>
+  <view wx:if="{{UserInfo.openid==albuminfo.member_openid}}">
+    <view class='title' style='padding-bottom:0rpx;'>上传</view>
+    <view class='flex-row' style='width:750rpx;flex-wrap:wrap'>
+      <navigator url='/pages/capture/capture?album_id={{album_id}}&takingtype={{albuminfo.albumtype=="P"?"1":"2"}}' class='bgckk'>
+        <image mode='aspectFill' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/e99e171642970203f557f402fd03f85a_18040901018.png"></image>
 
-<view wx:for="{{list}}" wx:key="key" wx:if="{{item.vals.length>0}}">
-  <view class='title'>{{item.name}}</view>
-  <view class='flex-row' style='width:750rpx;flex-wrap:wrap'>
-
-    <view wx:for="{{item.vals}}" wx:key="aa" class='photo'>
-      <image  class='photo' mode='aspectFill' bindtap='gotoPhoto' bindlongtap='photoLong' id="{{item.id}}" src="{{uploadpath}}memberphoto/{{item.content}}" wx:if="{{item.filetype=='P'}}"></image>
-      <video objectFit='contain' bindtap='gotoPhoto' bindlongtap='photoLong' id="{{item.id}}" class='photo' src="{{uploadpath}}memberphoto/{{item.content}}" wx:if="{{item.filetype=='V'&&item.cover==''}}" loop='{{false}}'></video>
-      <image mode='aspectFill' bindtap='gotoPhoto' bindlongtap='photoLong' id="{{item.id}}" class='photo' src="{{uploadpath}}memberphoto/{{item.cover}}" wx:if="{{item.filetype=='V'&&item.cover!=''}}"></image>
-      <cover-view class='selected' wx:if="{{longtype==true&&item.selected==true}}"></cover-view>
-      <cover-view class='unselected' wx:if="{{longtype==true&&item.selected!=true}}"></cover-view>
-      <image wx:if="{{item.filetype=='V'}}" class='videolittle' src="{{uploadpath}}resource/c33454d4804c7fd7f586c38761528598_18051610001.png"></image>
+      </navigator>
     </view>
   </view>
-</view>
 
-<view style='height:100rpx;'>
-</view>
-<!--
+  <view wx:for="{{list}}" wx:key="key" wx:if="{{item.vals.length>0}}">
+    <view class='title'>{{item.name}}</view>
+    <view class='flex-row' style='width:750rpx;flex-wrap:wrap'>
+
+      <view wx:for="{{item.vals}}" wx:key="aa" class='photo'>
+        <image class='photo' mode='aspectFill' bindtap='gotoPhoto' bindlongtap='photoLong' id="{{item.id}}" src="{{uploadpath}}memberphoto/{{item.content}}" wx:if="{{item.filetype=='P'}}"></image>
+        <video objectFit='contain' bindtap='gotoPhoto' bindlongtap='photoLong' id="{{item.id}}" class='photo' src="{{uploadpath}}memberphoto/{{item.content}}" wx:if="{{item.filetype=='V'&&item.cover==''}}" loop='{{false}}'></video>
+        <image mode='aspectFill' bindtap='gotoPhoto' bindlongtap='photoLong' id="{{item.id}}" class='photo' src="{{uploadpath}}memberphoto/{{item.cover}}" wx:if="{{item.filetype=='V'&&item.cover!=''}}"></image>
+        <cover-view class='selected' wx:if="{{longtype==true&&item.selected==true}}"></cover-view>
+        <cover-view class='unselected' wx:if="{{longtype==true&&item.selected!=true}}"></cover-view>
+        <image wx:if="{{item.filetype=='V'}}" class='videolittle' src="{{uploadpath}}resource/c33454d4804c7fd7f586c38761528598_18051610001.png"></image>
+      </view>
+    </view>
+  </view>
+
+  <view style='height:100rpx;'>
+  </view>
+  <!--
 <view class='picicon' bindtap='uploadpic'>
   <image class='icon' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/03a9dfb805bee4e0dd98448d0692b23e_18040600000.png'></image>
 </view>
@@ -41,62 +41,62 @@
 -->
 
 
-<view class='text-center privacy white-block tooltips ' wx:if="{{longtype==true}}">
-  <view class='flex-row tooltipsfix'>
-    <view class='flex-1' bindtap='moveAlbum'   wx:if="{{UserInfo.openid==albuminfo.member_openid}}">
-      <view>
-        <image class='toopsicon' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/3cd93307e5f11403d819d45df5b70145_18041519046.png'></image>
+  <view class='text-center privacy white-block tooltips ' wx:if="{{longtype==true}}">
+    <view class='flex-row tooltipsfix'>
+      <view class='flex-1' bindtap='moveAlbum' wx:if="{{UserInfo.openid==albuminfo.member_openid}}">
+        <view>
+          <image class='toopsicon' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/3cd93307e5f11403d819d45df5b70145_18041519046.png'></image>
+        </view>
+        <view>
+          加到相册
+        </view>
       </view>
-      <view>
-        加到相册
+      <view class='flex-1' bindtap='download'>
+        <view>
+          <image class='toopsicon' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/c26be60cfd1ba40772b5ac48b95ab19b_18041521022.png'></image>
+        </view>
+        <view>
+          下载
+        </view>
       </view>
-    </view>
-    <view class='flex-1' bindtap='download'>
-      <view>
-        <image class='toopsicon' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/c26be60cfd1ba40772b5ac48b95ab19b_18041521022.png'></image>
+      <view class='flex-1'>
+        <view>
+          <button class='toopsicon btntoopsicon' open-type="share"></button>
+        </view>
+        <view>
+          分享
+        </view>
       </view>
-      <view>
-        下载
+      <view class='flex-1' bindtap='viewPhoto'>
+        <view>
+          <image class='toopsicon' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/0a71438e6ae17a31b1a242e82862cd6b_18042100055.png'></image>
+        </view>
+        <view>
+          查看
+        </view>
       </view>
-    </view>
-    <view class='flex-1'>
-      <view>
-        <button class='toopsicon btntoopsicon' open-type="share"></button>
+      <view class='flex-1' bindtap='deleteFiles' wx:if="{{UserInfo.openid==albuminfo.member_openid}}">
+        <view>
+          <image class='toopsicon' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/3b1293dbb8eb7c5c401e82fc0323296a_18041520051.png'></image>
+        </view>
+        <view>
+          删除
+        </view>
       </view>
-      <view>
-        分享
-      </view>
-    </view>
-    <view class='flex-1' bindtap='viewPhoto'   >
-      <view>
-        <image class='toopsicon' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/0a71438e6ae17a31b1a242e82862cd6b_18042100055.png'></image>
-      </view>
-      <view>
-        查看
-      </view>
-    </view>
-    <view class='flex-1' bindtap='deleteFiles'   wx:if="{{UserInfo.openid==albuminfo.member_openid}}">
-      <view>
-        <image class='toopsicon' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/3b1293dbb8eb7c5c401e82fc0323296a_18041520051.png'></image>
-      </view>
-      <view>
-        删除
-      </view>
-    </view>
-    <view class='flex-1' bindtap='cancelLongtype'>
-      <view>
-        <image class='toopsicon' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/fda89ed742b7652bf9ff7b71aac77b79_18041520039.png'></image>
-      </view>
-      <view>
-        取消
+      <view class='flex-1' bindtap='cancelLongtype'>
+        <view>
+          <image class='toopsicon' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/fda89ed742b7652bf9ff7b71aac77b79_18041520039.png'></image>
+        </view>
+        <view>
+          取消
+        </view>
       </view>
     </view>
   </view>
-</view>
 
 </view>
 
-<modal hidden="{{UserInfo.openid==albuminfo.member_openid||passwordconfirmed==true}}" title="该相册锁定密码" confirm-text="提交" cancel-text="放弃" bindcancel="cancelPassword" bindconfirm="confirmPassword">  
-    <input type='password' placeholder="输入密码" value="{{password}}" bindinput='inputPassword' maxlength='20' /> 
-    <label style='color:red;font-size:26rpx;' wx:if="{{passwordincorrect==true}}">密码错误，请重新输入</label>
+<modal hidden="{{passwordconfirmed==true}}" title="浏览该相册需要密码" confirm-text="提交" cancel-text="放弃" bindcancel="cancelPassword" bindconfirm="confirmPassword">
+  <input type='password' placeholder="输入密码" value="{{password}}" bindinput='inputPassword' maxlength='20' />
+  <label style='color:red;font-size:26rpx;' wx:if="{{passwordincorrect==true}}">密码错误，请重新输入</label>
 </modal>
