@@ -8,6 +8,7 @@
   margin-right:8rpx;
   margin-top:8rpx;
   height: 142rpx;
+  background: #000;
 }
 .privacy{
   position: fixed;

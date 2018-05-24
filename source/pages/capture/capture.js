@@ -29,7 +29,7 @@ class Content extends AppBase {
   takePhoto() {
     var that=this;
     this.ctx.takePhoto({
-      quality: 'normal',
+      quality: 'low',
       success: (res) => {
         var photos=this.Base.getMyData().photos;
         photos.push(res.tempImagePath);

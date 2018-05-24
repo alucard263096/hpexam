@@ -7,10 +7,10 @@
   <view wx:if="{{UserInfo.openid==albuminfo.member_openid}}">
     <view class='title' style='padding-bottom:0rpx;'>上传</view>
     <view class='flex-row' style='width:750rpx;flex-wrap:wrap'>
-      <navigator url='/pages/capture/capture?album_id={{album_id}}&takingtype={{albuminfo.albumtype=="P"?"1":"2"}}' class='bgckk'>
+      <view url='/pages/capture/capture?album_id={{album_id}}&takingtype={{albuminfo.albumtype=="P"?"1":"2"}}' bindtap='btnUpload' class='bgckk'>
         <image mode='aspectFill' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/e99e171642970203f557f402fd03f85a_18040901018.png"></image>
 
-      </navigator>
+      </view>
     </view>
   </view>
 
@@ -20,8 +20,7 @@
 
       <view wx:for="{{item.vals}}" wx:key="aa" class='photo'>
         <image class='photo' mode='aspectFill' bindtap='gotoPhoto' bindlongtap='photoLong' id="{{item.id}}" src="{{uploadpath}}memberphoto/{{item.content}}" wx:if="{{item.filetype=='P'}}"></image>
-        <video objectFit='contain' bindtap='gotoPhoto' bindlongtap='photoLong' id="{{item.id}}" class='photo' src="{{uploadpath}}memberphoto/{{item.content}}" wx:if="{{item.filetype=='V'&&item.cover==''}}" loop='{{false}}'></video>
-        <image mode='aspectFill' bindtap='gotoPhoto' bindlongtap='photoLong' id="{{item.id}}" class='photo' src="{{uploadpath}}memberphoto/{{item.cover}}" wx:if="{{item.filetype=='V'&&item.cover!=''}}"></image>
+        <image mode='aspectFill' bindtap='gotoPhoto' bindlongtap='photoLong' id="{{item.id}}" class='photo' src="{{uploadpath}}memberphoto/{{item.cover}}" wx:if="{{item.filetype=='V'}}"></image>
         <cover-view class='selected' wx:if="{{longtype==true&&item.selected==true}}"></cover-view>
         <cover-view class='unselected' wx:if="{{longtype==true&&item.selected!=true}}"></cover-view>
         <image wx:if="{{item.filetype=='V'}}" class='videolittle' src="{{uploadpath}}resource/c33454d4804c7fd7f586c38761528598_18051610001.png"></image>

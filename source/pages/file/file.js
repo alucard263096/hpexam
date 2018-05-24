@@ -25,15 +25,15 @@ class Content extends AppBase {
         })
       }
       this.Base.setMyData({ files: ret,current:0, showbar: true });
+
+      albumapi.list({albumtype:ret[0].filetype}, (albums) => {
+        that.Base.setMyData({ albums: albums });
+      });
     });
   }
   onShow() {
     var that = this;
     super.onShow();
-    var albumapi = new AlbumApi();
-    albumapi.list({}, (albums) => {
-      this.Base.setMyData({ albums: albums });
-    });
   }
   toggleShowbar() {
     var showbar = this.Base.getMyData().showbar;

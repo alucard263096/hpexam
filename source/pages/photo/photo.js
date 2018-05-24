@@ -17,15 +17,16 @@ class Content extends AppBase {
     var that = this;
     this.Base.setMyData({ longtype: false, passwordconfirmed:true,password:"" });
 
-    this.Base.setMyData({ album_id: options.album_id });
+    this.Base.setMyData({ album_id: options.album_id,unlocked:false });
   }
   onShow() {
     var that = this;
     super.onShow();
+    var password=this.Base.getMyData().password;
     var albumapi = new AlbumApi();
     if (this.Base.options.album_id!=0){
       albumapi.getinfo({ id: this.Base.options.album_id }, (albuminfo) => {
-        var passwordconfirmed = albuminfo.password == "";
+        var passwordconfirmed = albuminfo.password == password;
         this.Base.setMyData({ albuminfo: albuminfo, passwordconfirmed: passwordconfirmed });
 
 
@@ -411,6 +412,44 @@ class Content extends AppBase {
     var val=e.detail.value;
     this.Base.setMyData({password:val});
   }
+  btnUpload(e){
+    var albuminfo = this.Base.getMyData().albuminfo;
+    var albumtype=albuminfo.albumtype;
+    var that=this;
+    if(albumtype=="P"){
+      wx.showActionSheet({
+        itemList: ["拍照上传","本地相册"],
+        success: function (res) {
+          if(res.tapIndex==0){
+            wx.navigateTo({
+              url: '/pages/capture/capture?album_id='+albuminfo.id+'&takingtype=1',
+            })
+          }else{
+            that.uploadpic();
+          }
+        },
+        fail: function (res) {
+          console.log(res.errMsg)
+        }
+      })
+    }else{
+      wx.showActionSheet({
+        itemList: ["录制上传", "本地视频"],
+        success: function (res) {
+          if (res.tapIndex == 0) {
+            wx.navigateTo({
+              url: '/pages/capture/capture?album_id=' + albuminfo.id + '&takingtype=2',
+            })
+          } else {
+            that.uploadvid();
+          }
+        },
+        fail: function (res) {
+          console.log(res.errMsg)
+        }
+      })
+    }
+  }
 }
 var firstlongtype = false;
 var page = new Content();
@@ -431,4 +470,5 @@ body.download = page.download;
 body.cancelPassword = page.cancelPassword;
 body.confirmPassword = page.confirmPassword;
 body.inputPassword = page.inputPassword;
+body.btnUpload = page.btnUpload;
 Page(body)
