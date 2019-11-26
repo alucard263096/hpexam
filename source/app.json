@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/test/test",
     "pages/membermobile/membermobile",
     "pages/member/member",
     "pages/memberinfo/memberinfo",
@@ -21,5 +22,6 @@
     "navigationBarBackgroundColor": "#50BAFF",
     "navigationBarTitleText": "ME相册",
     "navigationBarTextStyle": "white"
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

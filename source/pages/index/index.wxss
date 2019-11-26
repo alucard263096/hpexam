@@ -1,167 +1,21 @@
 /**index.wxss**/
-
-.container {
-  height: 100%;
+.userinfo {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 100rpx 0;
-  box-sizing: border-box;
 }
 
 .userinfo-avatar {
   width: 128rpx;
   height: 128rpx;
-  border: 4rpx solid white;
   margin: 20rpx;
   border-radius: 50%;
 }
 
 .userinfo-nickname {
-  color: white;
-  margin-top: 60rpx;
+  color: #aaa;
 }
 
 .usermotto {
-  margin-top: 400rpx;
-}
-
-.line-change {
-  padding: 20rpx;
-  border-radius: 10rpx;
-}
-
-.line-change image {
-  width: 45rpx;
-}
-
-.privacy {
-  position: fixed;
-  bottom: 0vw;
-  width: 750rpx;
-  color: #0af;
-  border-top: 4rpx solid #ccc;
-  line-height: 0rpx;
-}
-
-.privacy .icon {
-  width: 50rpx;
-  height: 50rpx;
-  margin-top: 20rpx;
-}
-.iconaaa{
-
-  width: 100rpx;
-  height: 100rpx;
-  margin-top: 10rpx;
-  margin-bottom: 10rpx;
-}
-
-.privacy .text {
-  font-size: 28rpx;
-  margin-top: 20rpx;
-  margin-bottom: 30rpx;
-  color: #50baff;
-}
-
-.albums {
-  padding-left: 30rpx;
-  padding-bottom: 30rpx;
-  padding-right: 0rpx;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.album {
-  width: 330rpx;
-  margin-top: 30rpx;
-  margin-right: 30rpx;
-}
-
-.cover {
-  border-radius: 10rpx;
-  width: 330rpx;
-  height: 330rpx;
-  background: -webkit-linear-gradient(#f4f4f4, #e5e5e5); /* Safari 5.1 - 6.0 */
-  background: -o-linear-gradient(#f4f4f4, #e5e5e5); /* Opera 11.1 - 12.0 */
-  background: -moz-linear-gradient(#f4f4f4, #e5e5e5); /* Firefox 3.6 - 15 */
-  background: linear-gradient(#f4f4f4, #e5e5e5); /* 标准的语法 */
-}
-
-.addcover {
-  width: 100rpx;
-  height: 100rpx;
-  margin: 115rpx;
-}
-.nullcover {
-  width: 100rpx;
-  height: 100rpx;
-  margin: 115rpx;
-}
-
-
-.descriptionplay {
-  font-size: 60%;
-  padding: 10rpx;
-}
-
-.edit {
-  position: relative;
-  width: 40rpx;
-  height: 40rpx;
-  left: 296rpx;
-  top: -40rpx;
-  background-image: url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/d13547f19a8d9fd174454065f96c8696_18040522039.png);
-  background-size: 100% 100%;
-}
-.selected{
-  background-color: white;
-  background-image: url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/575c73f2f46d0b3634adb44d384d9650_18041519045.png);
-  background-size: 100% 100%;
-  width: 40rpx;
-  height: 40rpx;
-  border-radius: 50%;
-  position: absolute;
-  margin-top: -80rpx;
-  margin-left: 260rpx;
-}
-.unselected{
-    border: white 2rpx solid;
-  background-color: rgba(200, 200, 200, 0.5);
-  background-size: 100% 100%;
-  width: 40rpx;
-  height: 40rpx;
-  border-radius: 50%;
-  position: absolute;
-  margin-top: -80rpx;
-  margin-left: 260rpx;
-}
-.tooltips{
-  padding-left: 120rpx;
-  padding-right: 120rpx;
-  font-size: 20rpx;
-  padding-top: 20rpx;
-  padding-bottom: 20rpx;
-}
-.tooltipsfix{
-  width: 510rpx;
-}
-.toopsicon{
-  width: 40rpx;
-  height: 40rpx;
-  border: #cccccc 2rpx solid;
-  border-radius: 50%;
-  margin-bottom: 20rpx;
-  padding:10rpx;
-}
-.btntoopsicon{
-
-  width: 64rpx;
-  height: 64rpx;
-  background-image:url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/mealbum/resource/f378b3bfaeb2fb365302eb29ae5d8bf0_18041520019.png);
-  background-size: 70% 70%;
-  background-repeat: no-repeat;
-  background-position: 10rpx 10rpx;
-
+  margin-top: 200px;
 }
