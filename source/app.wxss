@@ -2,6 +2,10 @@
 page{
   background: #f2f2f2;
 }
+
+input{
+  border: 1px solid gray;
+}
 view{
   color:#666;
 }

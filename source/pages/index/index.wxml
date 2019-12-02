@@ -1,8 +1,22 @@
 <!--index.wxml-->
-<button bindtap="uploadmyphoto">上传我的照片</button>
-<button bindtap="uploadyourphoto">上传明星的照片</button>
+<button bindtap="uploadmyphoto">上传识别的名片</button>
 <image src="{{uploadpath}}facetest/{{myphoto}}" mode="aspectFit"> </image>
-<image src="{{uploadpath}}facetest/{{yourphoto}}" mode="aspectFit"> </image>
-<button bindtap="merge">合成</button>
-<image src="data:image/jpeg;base64,{{mergephoto}}" mode="aspectFit"> </image>
-<textarea>{{res}}</textarea>
+<form bindsubmit="submit">
+  <view class="flex-row" wx:for="{{shujulist}}" wx:for-key="k" wx:for-index="idx">
+    <view>{{idx}}.
+    </view>
+    <view class="flex-1">
+      <input name="{{array2[st[idx]]}}" value="{{item.words}}"></input>
+    </view>
+    <view>
+      <picker bindchange="bindPickerChange" id="{{idx}}" value="0" range="{{array}}">
+        <view class="picker">
+         {{st[idx]==undefined?array[0]:array[st[idx]]}}
+        </view>
+      </picker>
+    </view>
+
+  </view>
+
+  <button form-type="submit">提交数据</button>
+</form>

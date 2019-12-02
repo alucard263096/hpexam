@@ -1,13 +1,13 @@
 export class ApiConfig {
 
   static GetApiUrl() {
-    return "https://cmsdev.app-link.org/alucard263096/medicinebox/api/";
+    return "https://cmsdev.app-link.org/alucard263096/aaaa/api/";
   }
   static GetUploadPath() {
-    return "https://alioss.app-link.org/alucard263096/medicinebox/";
+    return "https://alioss.app-link.org/alucard263096/aaaa/";
   }
   static GetFileUploadAPI() {
-    return "https://cmsdev.app-link.org/alucard263096/medicinebox/fileupload";
+    return "https://cmsdev.app-link.org/alucard263096/aaaa/fileupload";
   }
 
   static GetHeader() {
